@@ -12,6 +12,7 @@ import { ContactInquiryCard } from '../../components/public/ContactInquiryCard';
 import { Footer } from '../../components/public/Footer';
 import { ProductModal } from '../../components/public/ProductModal';
 import { RfqModal } from '../../components/public/RfqModal';
+import { WhatsAppFloatingButton } from '../../components/public/WhatsAppFloatingButton';
 
 export const HomePage: React.FC = () => {
   const { products, categories } = useData();
@@ -91,6 +92,9 @@ export const HomePage: React.FC = () => {
         onClose={() => setIsRfqOpen(false)}
         preSelectedProductId={rfqProductId}
       />
+
+      {/* Floating WhatsApp Contact Trigger */}
+      <WhatsAppFloatingButton phoneNumber="919922868727" />
     </div>
   );
 };
