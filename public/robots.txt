@@ -1,0 +1,19 @@
+# Robots.txt for Adivari Pharmaceuticals
+# Global Pharmaceutical Manufacturer & Exporter
+# https://adivaripharma.com/
+
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /favicon.svg
+
+# Disallow Admin and Internal Portal from Search Indexing
+Disallow: /admin
+Disallow: /admin/
+Disallow: /admin/*
+
+# Crawl Delay
+Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://adivaripharma.com/sitemap.xml

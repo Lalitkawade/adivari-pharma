@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage & Core Global Export Portal -->
+  <url>
+    <loc>https://adivaripharma.com/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://adivaripharma.com/images/hero-aesthetic.jpg</image:loc>
+      <image:title>Adivari Pharmaceuticals - WHO-GMP Injectable Manufacturer and Exporter</image:title>
+      <image:caption>Sterile injectable formulations and global pharmaceutical exports from India</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Product Catalog & Formulations -->
+  <url>
+    <loc>https://adivaripharma.com/#core-products</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- International Export & Global Logistics -->
+  <url>
+    <loc>https://adivaripharma.com/#export</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- WHO-GMP Manufacturing Standards & Quality Compliance -->
+  <url>
+    <loc>https://adivaripharma.com/#showcase</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- International Buyers & Importers FAQ -->
+  <url>
+    <loc>https://adivaripharma.com/#faq</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Global Export Desk & RFQ Inquiries -->
+  <url>
+    <loc>https://adivaripharma.com/#contact</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
