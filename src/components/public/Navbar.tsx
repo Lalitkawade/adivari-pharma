@@ -58,10 +58,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
             Global Export
           </a>
           <a href="#showcase" className="nav-segment-link">
-            WHO-GMP Specs
+            Facility
           </a>
           <a href="#faq" className="nav-segment-link">
-            Trade FAQ
+            FAQ
           </a>
           <a href="#contact" className="nav-segment-link">
             Contact
@@ -131,14 +131,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
             >
-              WHO-GMP Specs
+              Facility
             </a>
             <a
               href="#faq"
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
             >
-              Trade FAQ
+              FAQ
             </a>
           </div>
 

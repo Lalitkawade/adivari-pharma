@@ -10,7 +10,6 @@ interface FaqItem {
   question: string;
   answer: string;
   category: string;
-  keywords: string[];
 }
 
 interface InternationalFaqSectionProps {
@@ -22,40 +21,34 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
 
   const faqs: FaqItem[] = [
     {
-      question: "How do foreign distributors and importers buy pharmaceuticals from India through Adivari?",
-      answer: "International pharmaceutical distributors, hospital procurement committees, and licensed importers can initiate orders by submitting a Request for Quotation (RFQ). Our dedicated Global Export Desk provides competitive CIF (Cost, Insurance & Freight), FOB (Free on Board), or CFR pricing within 12 hours. We furnish complete commercial invoices, Certificates of Origin, analytical COAs, and technical support to ensure seamless customs clearance at destination ports.",
-      category: "Export & Ordering",
-      keywords: ["CIF", "FOB", "Pharmaceutical Exporter India", "Wholesale Pricing"]
+      question: "How can foreign distributors and hospitals start importing from Adivari?",
+      answer: "You can start by submitting an inquiry or Request for Quotation (RFQ) through our website with your target products and estimated order volumes. Our export team responds within 24 hours with a comprehensive commercial quotation (CIF or FOB terms), product specifications, and documentation samples to help you begin your evaluation.",
+      category: "Ordering & Inquiries"
     },
     {
-      question: "What regulatory dossiers (CTD / eCTD) and health authority certificates do you provide?",
-      answer: "We supply pre-compiled Common Technical Document (CTD) and electronic CTD (eCTD) dossiers covering Modules 1 through 5, including Quality Overall Summary (Module 2) and detailed Quality documentation (Module 3). Additionally, we provide WHO-format Certificates of Pharmaceutical Product (COPP) issued by the Indian CDSCO/FDA, Free Sale Certificates (FSC), Legalized/Apostilled batch COAs, and real-time ICH Zone IVb stability studies (tested at 30°C / 75% RH).",
-      category: "Regulatory & Dossiers",
-      keywords: ["CTD Dossier", "eCTD Modules 1-5", "COPP WHO format", "Free Sale Certificate"]
+      question: "What registration dossiers and certificates do you supply for Ministry of Health approval?",
+      answer: "We supply complete technical dossiers in CTD format (Modules 1 through 5), along with WHO-format Certificates of Pharmaceutical Product (COPP) issued by the Indian drug control authority, Free Sale Certificates (FSC), and batch-specific Certificates of Analysis (COA). We also provide real-time stability data to support drug registration in tropical and warm climates.",
+      category: "Regulatory & Dossiers"
     },
     {
-      question: "Do you offer third-party contract manufacturing and private labeling (OEM) for international brands?",
-      answer: "Yes. Adivari Pharmaceuticals is a trusted contract manufacturing partner for global pharmaceutical marketing companies and hospital chains. We offer end-to-end custom formulation manufacturing under your private label, including customized bilingual vial labels and folding cartons (English, Spanish, French, Arabic, Russian), custom tamper-evident seals, and GS1 2D DataMatrix track-and-trace serialization.",
-      category: "Contract Manufacturing",
-      keywords: ["Third Party Manufacturing India", "Private Label Injectables", "OEM Pharma"]
+      question: "Do you offer private label manufacturing (contract manufacturing) under our own brand?",
+      answer: "Yes, we regularly partner with overseas pharmaceutical marketing companies and hospital chains for contract manufacturing. We can produce formulations under your private brand, complete with custom bilingual cartons, ampoule/vial labeling, package inserts (in English, Spanish, French, or Arabic), and serialized 2D barcodes.",
+      category: "Contract Manufacturing"
     },
     {
-      question: "Which international sea ports and air cargo hubs are used for export consignments?",
-      answer: "Ocean freight consignments are dispatched via JNPT Nhava Sheva Port, Mumbai (India's premier modern container seaport) utilizing certified refrigerated reefer containers (FCL and LCL) with uninterrupted power plug-in. High-urgency hospital supplies and biological injectables are air-shipped via Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai, with priority customs bonded clearance and delivery within 72 to 96 hours globally.",
-      category: "Logistics & Ports",
-      keywords: ["JNPT Nhava Sheva", "Mumbai Airport BOM", "Reefer Container", "Cold Chain"]
+      question: "How are products shipped and how do you ensure temperature integrity?",
+      answer: "Depending on your urgency and order size, consignments are shipped via air cargo from Mumbai International Airport (BOM) or by ocean freight in refrigerated containers from JNPT Port (Mumbai). For temperature-sensitive injectables (such as 2°C to 8°C cold-chain products), we use validated insulated thermal shippers with digital temperature data-loggers so you can verify temperature integrity upon arrival.",
+      category: "Logistics & Cold Chain"
     },
     {
-      question: "What temperature monitoring protocols are in place for cold-chain and room-temperature injectables?",
-      answer: "Every export shipment includes multi-sensor, USB-downloadable calibrated digital data-loggers placed strategically within shippers and pallets. Cold-chain formulations (2°C to 8°C) are packed inside validated high-density EPS/VIP thermal shippers with vacuum-insulated panels and conditioned phase-change materials (PCM) providing up to 120 hours of thermal holdover without external power.",
-      category: "Cold-Chain Integrity",
-      keywords: ["2°C–8°C Cold Chain", "Temperature Datalogger", "Thermal Shippers"]
+      question: "What are your typical order quantities (MOQ) and production lead times?",
+      answer: "Minimum order quantities depend on whether you are purchasing standard catalog packaging or requesting custom private-label runs. For standard catalog formulations, orders typically ship within 10 to 14 working days. Customized packaging or private label batches generally dispatch within 3 to 4 weeks following artwork and registration sign-off.",
+      category: "Commercial & Timing"
     },
     {
-      question: "What are your standard payment terms, minimum order quantities (MOQ), and delivery lead times?",
-      answer: "We accommodate international commercial standards including Confirmed Irrevocable Letter of Credit (L/C at sight), Telegraphic Transfer (T/T Advance), and Cash Against Documents (CAD) for established partners. MOQs are flexible depending on standard commercial batch sizes or customized private-label runs. Standard catalog formulations ship within 10–14 business days, while customized contract packaging dispatches in 21–30 days.",
-      category: "Commercial Terms",
-      keywords: ["Letter of Credit L/C", "T/T Advance", "MOQ", "Fast Dispatch"]
+      question: "What payment terms and commercial arrangements do you accept?",
+      answer: "We work with standard international commercial banking instruments, including Irrevocable Letters of Credit (L/C at sight) and Telegraphic Transfer (T/T). For long-term distribution partners and institutional tenders, our commercial team can discuss flexible milestone payment terms.",
+      category: "Payment Terms"
     }
   ];
 
@@ -69,18 +62,18 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#EFECE5]">
-          <div className="space-y-2 max-w-2xl">
+          <div className="space-y-2 max-w-2xl text-left">
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F3EC] border border-[#DFDCD4] text-[10px] font-mono uppercase font-bold text-[#4A463B] w-fit mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
               <HelpCircle className="w-3.5 h-3.5 text-[#4A463B]" />
-              <span>International Trade &amp; Importer Guide</span>
+              <span>EXPORT INFORMATION &amp; FAQS</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#141414] font-['Plus_Jakarta_Sans'] tracking-tight">
               Frequently Asked Questions by <br />
-              <span className="text-[#4A463B]">Global Pharma Buyers &amp; Importers</span>
+              <span className="text-[#3B5244]">International Buyers &amp; Distributors</span>
             </h2>
             <p className="text-xs sm:text-sm text-[#635F55] leading-relaxed">
-              Essential answers regarding international drug registration, CTD dossiers, WHO-GMP certification, Incoterms, and global cold-chain pharmaceutical shipping from India.
+              Common questions about international registrations, CTD dossiers, batch releases, and global shipping from India.
             </p>
           </div>
 
@@ -90,7 +83,7 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
               className="btn-sensiq-black text-xs py-2.5 px-6 font-medium"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Ask Our Export Desk</span>
+              <span>Contact Export Desk</span>
             </button>
           </div>
         </div>
@@ -138,23 +131,8 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#58554D] leading-relaxed border-t border-[#EAE4D7] mt-1 space-y-3">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#58554D] leading-relaxed border-t border-[#EAE4D7] mt-1 text-left">
                     <p>{faq.answer}</p>
-                    
-                    {/* Keyword Tags Pill Row */}
-                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                      <span className="text-[10px] font-mono text-[#8A857A] font-semibold uppercase tracking-wider mr-1">
-                        Keywords:
-                      </span>
-                      {faq.keywords.map((kw, kidx) => (
-                        <span 
-                          key={kidx} 
-                          className="px-2.5 py-0.5 rounded-full bg-[#F3F0EA] text-[#4A463B] text-[10px] font-mono border border-[#DFDCD4]"
-                        >
-                          #{kw}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 )}
               </div>
@@ -170,10 +148,10 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
             </div>
             <div>
               <p className="text-xs sm:text-sm font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
-                Looking for exclusive country agency rights or hospital tender partnership?
+                Have specific country registration requirements or tender questions?
               </p>
               <p className="text-[11px] text-[#635F55]">
-                Connect with our International Business Development Directors for immediate CIF quotations and sample shipments.
+                Our international business team is ready to provide country-specific guidance and proforma pricing.
               </p>
             </div>
           </div>
@@ -182,7 +160,7 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
             onClick={onOpenRfq}
             className="btn-sensiq-black text-xs py-2.5 px-6 font-medium shrink-0"
           >
-            Connect with Export Team
+            Inquire with Export Desk
           </button>
         </div>
 

@@ -1,32 +1,26 @@
 import React from 'react';
-import { 
-  FlaskConical, 
-  ShieldCheck, 
-  FileCheck2, 
-  ThermometerSnowflake 
-} from 'lucide-react';
 
 export const TrustBar: React.FC = () => {
   const features = [
     {
-      code: 'PHARMACOPOEIA',
-      title: 'Compendial Grade APIs',
-      desc: 'Active pharmaceutical ingredients complying with USP, BP, EP, and IP standards.'
+      code: 'QUALITY',
+      title: 'International Standards',
+      desc: 'Formulations manufactured to USP, BP, and IP specifications with batch-wise testing.'
     },
     {
-      code: 'CLEANROOM',
-      title: 'Grade A Aseptic Suites',
-      desc: 'ISO Class 5 sterile filling lines with automated CIP/SIP freeze-drying.'
+      code: 'MANUFACTURING',
+      title: 'WHO-GMP Certified Plant',
+      desc: 'Modern sterile injectable facilities with automated filling and freeze-drying lines.'
     },
     {
       code: 'REGULATORY',
-      title: 'CTD Modules 1 to 5',
-      desc: 'Pre-compiled technical dossiers ready for international regulatory submissions.'
+      title: 'Full CTD Dossiers & COPP',
+      desc: 'Ready technical files and health authority certificates for fast registration overseas.'
     },
     {
-      code: 'LOGISTICS',
-      title: 'Cold-Chain Freight',
-      desc: 'Validated +2°C to +8°C and CRT packaging with calibrated digital data-loggers.'
+      code: 'GLOBAL SUPPLY',
+      title: 'Temperature-Safe Shipping',
+      desc: 'Continuous cold-chain and ambient freight dispatched by air and sea to global ports.'
     }
   ];
 
@@ -34,7 +28,7 @@ export const TrustBar: React.FC = () => {
     <section className="py-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div className="bg-white rounded-[28px] border border-[#DFDCD4] shadow-xs overflow-hidden">
         
-        {/* Segmented Top Indicator Line (Matching reference: yellow active segment + subtle gray line) */}
+        {/* Segmented Top Indicator Line */}
         <div className="grid grid-cols-4 w-full">
           <div className="border-t-2 border-[#E2CA40]" />
           <div className="border-t-2 border-[#E2CA40]" />

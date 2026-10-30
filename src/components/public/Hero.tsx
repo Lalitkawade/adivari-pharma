@@ -1,120 +1,125 @@
 import React from 'react';
-import { 
-  ArrowRight
-} from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { MolecularMotionCanvas } from '../motion/MolecularMotionCanvas';
 
 interface HeroProps {
-  onOpenRfq: () => void;
+  onOpenRfq?: () => void;
   onExploreCatalog?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenRfq, onExploreCatalog }) => {
+export const Hero: React.FC<HeroProps> = ({ onExploreCatalog }) => {
+  const handleExplore = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onExploreCatalog) {
+      onExploreCatalog();
+    } else {
+      const catalogEl = document.getElementById('catalog');
+      if (catalogEl) {
+        catalogEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <section className="pt-2 pb-12 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto w-full relative">
+    <section className="pt-2 pb-8 sm:pb-12 px-3 sm:px-6 lg:px-8 max-w-[1400px] mx-auto w-full relative">
       
       {/* 
-        Main Large Editorial Canvas Card
-        Background is the Pharma Vials on Travertine Pedestal (/images/hero-aesthetic.jpg)
-        - Reference woman image completely removed
-        - Pharma vials image is the full background of this card
-        - No inner box or frame
-        - No sticky HUD badges
+        Main Editorial Canvas Card
+        - Desktop: Expansive canvas with full-bleed vials on travertine on right and editorial mask on left
+        - Mobile: Dedicated clean visual layout featuring crisp typography, single explore button, and framed vials showcase
       */}
-      <div className="relative z-10 editorial-canvas-card min-h-[540px] sm:min-h-[580px] lg:min-h-[620px] p-6 sm:p-10 lg:p-14 overflow-hidden shadow-xl border border-[#DFDCD4] rounded-[36px] sm:rounded-[44px] flex items-center">
+      <div className="relative z-10 editorial-canvas-card bg-[#FBF9F4] sm:min-h-[560px] lg:min-h-[620px] p-5 sm:p-10 lg:p-14 overflow-hidden shadow-lg border border-[#DFDCD4] rounded-[28px] sm:rounded-[44px] flex flex-col justify-center">
         
-        {/* Background Image: Pharma Vials on Travertine Pedestal */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Desktop / Tablet Background Image: Pharma Vials on Travertine Pedestal */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden sm:block">
           <img
             src="/images/hero-aesthetic.jpg"
             alt="Adivari Pharmaceuticals Sterile Injectable Formulations"
             className="w-full h-full object-cover object-[78%_center] lg:object-right"
           />
-          {/* 
-            Editorial gradient mask:
-            Solid editorial stone off-white on the left for crisp typography,
-            gracefully fading to transparent towards the right so the sterile vials on travertine stone 
-            stand out in full view with zero awkward borders or boxes.
-          */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F4] via-[#FBF9F4]/95 sm:via-[#FBF9F4]/85 to-transparent sm:w-[75%] lg:w-[62%]" />
+          {/* Editorial gradient mask: solid stone off-white on left, fading into image on right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F4] via-[#FBF9F4]/95 sm:via-[#FBF9F4]/85 to-transparent sm:w-[75%] lg:w-[60%]" />
           
-          {/* Mobile wash to ensure AAA contrast across phone screens */}
-          <div className="absolute inset-0 bg-[#FBF9F4]/75 sm:hidden" />
-          
-          {/* Subtle molecular motion particles in canvas background */}
+          {/* Subtle molecular motion particles */}
           <div className="absolute inset-0 opacity-25">
             <MolecularMotionCanvas />
           </div>
         </div>
 
-        {/* Foreground Content */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Content Container */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
           
-          {/* Left Column: Typography & Action Buttons */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          {/* Left / Main Column: Typography & Single Primary Action */}
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-left">
             
-            {/* Monospace Micro Tag */}
-            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#7A7569]">
-              WHO-GMP STERILE INJECTABLE FORMULATIONS
+            {/* Top Monospace Tag with glowing dot */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#E3DFD5] text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-[#666256] uppercase shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40] animate-pulse" />
+              <span>WHO-GMP CERTIFIED INJECTABLE MANUFACTURER</span>
             </div>
 
-            {/* Modernist Editorial Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-[#141414] tracking-tight leading-[1.08] font-['Plus_Jakarta_Sans']">
-              Precision sterile <br />
-              formulations built for <br />
-              critical care
+            {/* Natural Human Editorial Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.3rem] font-bold text-[#141414] tracking-tight leading-[1.14] sm:leading-[1.1] font-['Plus_Jakarta_Sans']">
+              Trusted sterile <br className="hidden sm:inline" />
+              injectables for hospitals <br className="hidden sm:inline" />
+              &amp; global healthcare
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-sm text-[#615D52] max-w-lg font-normal leading-relaxed">
-              Pharmaceutical manufacturing of lyophilized antibiotics, emergency anticoagulants, and intensive care parenterals with verified CTD dossier compliance.
+            <p className="text-xs sm:text-sm text-[#5D594F] max-w-lg font-normal leading-relaxed">
+              We manufacture hospital-grade antibiotics, emergency anticoagulants, and critical care parenterals with complete registration dossiers for overseas distributors and health systems.
             </p>
 
-            {/* Action Buttons: Solid Black Pill Button with Arrow & White Pill Button */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-              <button
-                onClick={() => onOpenRfq()}
-                className="btn-sensiq-black px-7 py-3.5 text-xs font-semibold"
-              >
-                <span>Start exploring</span>
-                <ArrowRight className="w-4 h-4 ml-0.5" />
-              </button>
-
-              <a
-                href="#catalog"
-                onClick={(e) => {
-                  if (onExploreCatalog) {
-                    e.preventDefault();
-                    onExploreCatalog();
-                  }
-                }}
-                className="btn-sensiq-white px-6 py-3.5 text-xs font-semibold text-center"
-              >
-                <span>Explore Product Catalogue</span>
-              </a>
+            {/* Mobile Visual Showcase Plate (Displays on phones where background image is hidden) */}
+            <div className="relative sm:hidden w-full h-52 rounded-2xl overflow-hidden border border-[#E5DFD4] shadow-sm bg-white my-1">
+              <img
+                src="/images/hero-aesthetic.jpg"
+                alt="Adivari Sterile Injectable Vials"
+                className="w-full h-full object-cover object-[78%_center]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/65 via-[#141414]/15 to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] text-white font-mono font-semibold">
+                <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20">
+                  Cleanroom Facility
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-[#D96B43]/90 backdrop-blur-md text-white border border-white/20 font-bold">
+                  WHO-GMP Certified
+                </span>
+              </div>
             </div>
 
-            {/* 3 Capabilities Row */}
-            <div className="pt-6 border-t border-[#E3DFD5] grid grid-cols-3 gap-4 text-xs max-w-md">
-              <div>
-                <p className="font-bold text-[#141414] text-xs font-mono">GRADE A</p>
-                <p className="text-[11px] text-[#7A7569] mt-0.5">Aseptic Cleanrooms</p>
+            {/* Single Primary Action Button: Explore Products */}
+            <div className="pt-1 sm:pt-2">
+              <button
+                onClick={handleExplore}
+                className="w-full sm:w-auto btn-sensiq-black px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 shadow-md active:scale-[0.98] transition-all group"
+              >
+                <span>Explore Products Catalogue</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* 3 Capabilities Row - Clear, Human & Real */}
+            <div className="pt-4 sm:pt-6 border-t border-[#E5E1D7] grid grid-cols-3 gap-2 sm:gap-4 text-left max-w-md">
+              <div className="bg-white/70 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-[#ECE8DE] sm:border-0 shadow-2xs sm:shadow-none">
+                <p className="font-bold text-[#141414] text-[11px] sm:text-xs font-mono">WHO-GMP</p>
+                <p className="text-[10px] sm:text-[11px] text-[#7A7569] leading-tight mt-0.5">Certified Plant</p>
               </div>
 
-              <div>
-                <p className="font-bold text-[#141414] text-xs font-mono">CTD READY</p>
-                <p className="text-[11px] text-[#7A7569] mt-0.5">Modules 1 to 5</p>
+              <div className="bg-white/70 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-[#ECE8DE] sm:border-0 shadow-2xs sm:shadow-none">
+                <p className="font-bold text-[#141414] text-[11px] sm:text-xs font-mono">EXPORT READY</p>
+                <p className="text-[10px] sm:text-[11px] text-[#7A7569] leading-tight mt-0.5">CTD Dossiers</p>
               </div>
 
-              <div>
-                <p className="font-bold text-[#141414] text-xs font-mono">ZONE IVb</p>
-                <p className="text-[11px] text-[#7A7569] mt-0.5">Stability Validated</p>
+              <div className="bg-white/70 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-[#ECE8DE] sm:border-0 shadow-2xs sm:shadow-none">
+                <p className="font-bold text-[#141414] text-[11px] sm:text-xs font-mono">GLOBAL SUPPLY</p>
+                <p className="text-[10px] sm:text-[11px] text-[#7A7569] leading-tight mt-0.5">Air &amp; Sea Freight</p>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Clean Open Area allowing the background vials to be appreciated */}
+          {/* Right Column: Clean Open Area on Desktop showcasing the vials */}
           <div className="lg:col-span-5 hidden lg:block" aria-hidden="true">
             {/* Open space for the background vials on travertine stone */}
           </div>

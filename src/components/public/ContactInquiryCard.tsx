@@ -41,10 +41,10 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
         items: [
           { productId: 'general', productName: 'Express Export Catalog & Pricing Inquiry', quantity: 1, unit: 'request' }
         ],
-        message: `Direct express lead submitted from website: ${quickContact}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing.`
+        message: `Direct inquiry from website: ${quickContact}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing.`
       });
       setSubmitted(true);
-      toast.success('Inquiry received! Our Global Export Desk director will reach out within 12 hours.');
+      toast.success('Inquiry received! Our export team will reach out within 24 hours.');
     } catch (err) {
       console.error(err);
       toast.error('Submission failed. Please try again.');
@@ -58,7 +58,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Coordinates & Hours */}
-          <div className="lg:col-span-5 space-y-4 text-xs">
+          <div className="lg:col-span-5 space-y-4 text-xs text-left">
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F3EC] border border-[#DFDCD4] text-[10px] font-mono uppercase font-bold text-[#4A463B] w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
               <Globe2 className="w-3.5 h-3.5 text-[#4A463B]" />
@@ -66,18 +66,18 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
             </div>
 
             <h3 className="text-xl font-bold text-[#141414] font-['Plus_Jakarta_Sans'] tracking-tight">
-              Global Export Desk &amp; Quotations
+              Export Inquiries &amp; Quotations
             </h3>
 
             <div className="space-y-3 text-[#58554D]">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#4A463B] shrink-0 mt-0.5" />
-                <span>MIDC Pharmaceutical Zone, Andheri East, Mumbai, MH - 400093, India</span>
+                <span>MIDC Pharmaceutical Zone, Andheri East, Mumbai, Maharashtra 400093, India</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-[#4A463B] shrink-0" />
-                <span>Global Support: 24/7 Dispatch Desk (GMT +5:30)</span>
+                <span>Export Operations: Monday to Saturday (Quick response within 24h)</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -86,7 +86,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                   onClick={onOpenRfq}
                   className="font-bold text-[#141414] hover:text-[#4A463B] text-left cursor-pointer transition-colors"
                 >
-                  B2B Wholesale &amp; RFQ Inquiry Desk
+                  Direct Inquiry &amp; RFQ Desk
                 </button>
               </div>
 
@@ -98,36 +98,36 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
 
             <div className="pt-2 flex flex-wrap gap-1.5 text-[10px] text-[#58554D] font-mono">
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
-                JNPT Nhava Sheva Port
+                JNPT Mumbai Port
               </span>
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
-                Mumbai Airport (BOM)
+                Air Cargo Mumbai (BOM)
               </span>
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
-                Incoterms: CIF / FOB / CFR
+                Incoterms: CIF / FOB
               </span>
             </div>
           </div>
 
-          {/* Right Column: Quick Subscription/Inquiry Form */}
+          {/* Right Column: Quick Inquiry Form */}
           <div className="lg:col-span-7 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 bg-[#FAF9F5] rounded-[28px] border border-[#DFDCD4]">
             <div className="space-y-2 text-center sm:text-left flex-1">
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#8A857A]">
-                Express Wholesale Lead Response
+                Direct Commercial Inquiry
               </span>
 
               <h4 className="text-sm font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
-                Request Commercial Quotation &amp; CTD Dossier List
+                Request Export Pricing &amp; Registration Files
               </h4>
 
               <p className="text-xs text-[#635F55] leading-relaxed">
-                Enter your work email or WhatsApp number to receive our export catalog with wholesale CIF/FOB pricing, batch COAs, and technical dossier summaries.
+                Enter your work email or WhatsApp contact to receive our full catalogue with wholesale proforma pricing, batch specifications, and dossier availability.
               </p>
               
               {submitted ? (
                 <div className="pt-2 flex items-center gap-2 text-xs text-[#2E7D32] font-semibold">
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>Inquiry received! Our export manager will contact you within 12 hours.</span>
+                  <span>Inquiry received! Our export manager will contact you within 24 hours.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="pt-2 flex flex-col sm:flex-row gap-2 max-w-md">
@@ -136,7 +136,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                     required
                     value={quickContact}
                     onChange={(e) => setQuickContact(e.target.value)}
-                    placeholder="Corporate email or WhatsApp number..."
+                    placeholder="Work email or WhatsApp number..."
                     className="flex-1 bg-white border border-[#DFDCD4] text-[#141414] rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-[#141414]"
                   />
                   <button
@@ -148,8 +148,8 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                 </form>
               )}
 
-              <p className="text-[10px] text-[#8A857A] font-mono pt-1">
-                Foreign language support: English, Español, Français, العربية, Русский.
+              <p className="text-[11px] text-[#7A7569] pt-1">
+                Documentation available in English, Spanish, French, and Arabic.
               </p>
             </div>
 

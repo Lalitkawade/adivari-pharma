@@ -5,8 +5,7 @@ import { Navbar } from '../../components/public/Navbar';
 import { Hero } from '../../components/public/Hero';
 import { TrustBar } from '../../components/public/TrustBar';
 import { UnifiedFormulationsCatalog } from '../../components/public/UnifiedFormulationsCatalog';
-import { GlobalExportSection } from '../../components/public/GlobalExportSection';
-import { AsepticProcessMotion } from '../../components/motion/AsepticProcessMotion';
+import { DigitalCatalogueHub } from '../../components/public/DigitalCatalogueHub';
 import { InternationalFaqSection } from '../../components/public/InternationalFaqSection';
 import { ShowcaseSage } from '../../components/public/ShowcaseSage';
 import { ContactInquiryCard } from '../../components/public/ContactInquiryCard';
@@ -65,11 +64,8 @@ export const HomePage: React.FC = () => {
         onOpenBulkRfq={() => handleOpenRfq()}
       />
 
-      {/* 4. Interactive Sterile Manufacturing & Lyophilization Motion Architecture */}
-      <AsepticProcessMotion />
-
-      {/* 5. Global Export & International Capabilities Hub */}
-      <GlobalExportSection onOpenRfq={handleOpenRfq} />
+      {/* 4. B2B Digital Export Catalogue & International Regulatory Hub */}
+      <DigitalCatalogueHub onOpenRfq={handleOpenRfq} />
 
       {/* 6. WHO-GMP Cleanroom Standards Showcase */}
       <ShowcaseSage onOpenRfq={handleOpenRfq} />
