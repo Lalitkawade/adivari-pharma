@@ -9,7 +9,6 @@ import {
   PackageCheck, 
   ArrowRight, 
   Eye, 
-  FlaskConical,
   CheckCircle2,
   ShieldCheck,
   ChevronDown
@@ -117,32 +116,23 @@ export const UnifiedFormulationsCatalog: React.FC<UnifiedFormulationsCatalogProp
           <div className="space-y-2 max-w-2xl text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F3EC] border border-[#DFDCD4] text-[10px] font-mono uppercase font-bold text-[#4A463B]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
-              <FlaskConical className="w-3.5 h-3.5 text-[#4A463B]" />
-              <span>STERILE INJECTABLES CATALOGUE</span>
+              <span>PHARMACEUTICAL PRODUCTS PORTFOLIO</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-bold text-[#141414] font-['Plus_Jakarta_Sans'] tracking-tight leading-tight">
-              Hospital Formulations &amp; Injectables
+              Pharmaceutical Products Portfolio
             </h2>
 
             <p className="text-xs sm:text-sm text-[#635F55] leading-relaxed">
-              Explore our hospital-grade antibiotics, emergency injectables, and critical care formulations—manufactured under strict WHO-GMP compliance with complete registration dossiers and batch-wise release COAs.
+              Explore our growing pharmaceutical portfolio across multiple therapeutic categories, including tablets, capsules, injectables, critical care medicines, anti-infectives, and specialty healthcare solutions.
             </p>
           </div>
 
-          {/* Top Right Action & Quality Assurance Note */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full lg:w-auto">
-            <div className="px-3.5 py-2.5 rounded-2xl bg-[#F7F5EE] border border-[#E4E0D6] flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#2E7D32] shrink-0" />
-              <div className="text-[11px] text-[#4A463B] text-left">
-                <span className="font-bold text-[#141414] block leading-tight">Batch COA with Every Order</span>
-                <span className="text-[#6F6A5E] text-[10px]">USP / BP / IP Monograph Tested</span>
-              </div>
-            </div>
-
+          {/* Top Right Action Button */}
+          <div className="flex items-center gap-3 shrink-0 w-full lg:w-auto">
             <button
               onClick={onOpenBulkRfq}
-              className="btn-sensiq-black text-xs py-3 px-6 font-semibold flex items-center justify-center gap-2 shadow-sm"
+              className="w-full sm:w-auto btn-sensiq-black text-xs py-3 px-6 font-semibold flex items-center justify-center gap-2 shadow-sm"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Submit Bulk RFQ</span>
@@ -233,7 +223,7 @@ export const UnifiedFormulationsCatalog: React.FC<UnifiedFormulationsCatalogProp
               WHO-GMP Formulation Registry
             </h3>
             <p className="text-xs text-[#6F7D74] max-w-md mx-auto">
-              Our injectable formulations catalog is dynamically synced with our administrative portal. For immediate custom manufacturing or dossier availability inquiries, please reach out directly.
+              Our pharmaceutical portfolio is dynamically synced with our administrative portal. For immediate sourcing, distribution partnerships, or dossier availability inquiries, please reach out directly.
             </p>
             <button
               onClick={onOpenBulkRfq}
@@ -318,7 +308,7 @@ export const UnifiedFormulationsCatalog: React.FC<UnifiedFormulationsCatalogProp
                   <div className="mt-4 pt-3 border-t border-[#EAE6DC] grid grid-cols-2 gap-2 text-[10px] font-mono text-[#58554D]">
                     <div className="flex items-center gap-1">
                       <CheckCircle2 className="w-3 h-3 text-[#2E7D32]" />
-                      <span>Sterile Injectable</span>
+                      <span>{prod.dosageForm || 'Quality Assured'}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <ShieldCheck className="w-3 h-3 text-[#2E7D32]" />

@@ -256,10 +256,10 @@ export const DigitalCatalogueHub: React.FC<DigitalCatalogueHubProps> = ({ onOpen
                 <Boxes className="w-5 h-5 stroke-[1.8]" />
               </div>
               <h3 className="font-bold text-[#141414] text-base font-['Plus_Jakarta_Sans']">
-                Custom Packaging &amp; Private Label
+                Private Label &amp; Customized Packaging
               </h3>
               <p className="text-xs text-[#5D594F] leading-relaxed">
-                We produce formulations under your brand name or supply our standard hospital packs with local language labeling and barcode serialization.
+                We support our business partners with private label solutions and customized pharmaceutical packaging through qualified manufacturing and supply partners, subject to product availability and regulatory requirements.
               </p>
               <ul className="space-y-1.5 text-[11px] text-[#4A463B] font-medium pt-1">
                 <li className="flex items-center gap-1.5">
@@ -272,7 +272,7 @@ export const DigitalCatalogueHub: React.FC<DigitalCatalogueHubProps> = ({ onOpen
                 </li>
                 <li className="flex items-center gap-1.5">
                   <Check className="w-3.5 h-3.5 text-[#2E7D32]" />
-                  <span>Flexible batch sizes &amp; hospital pack formats</span>
+                  <span>Flexible batch sizes &amp; customized pack formats</span>
                 </li>
               </ul>
             </div>
@@ -281,7 +281,7 @@ export const DigitalCatalogueHub: React.FC<DigitalCatalogueHubProps> = ({ onOpen
               onClick={() => onOpenRfq()}
               className="text-xs font-bold text-[#D96B43] hover:text-[#B5522C] inline-flex items-center gap-1 pt-2"
             >
-              <span>Discuss private label manufacturing</span>
+              <span>Discuss private label solutions</span>
               <ArrowRight className="w-3 h-3" />
             </button>
           </div>

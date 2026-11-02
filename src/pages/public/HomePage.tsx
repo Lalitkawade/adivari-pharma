@@ -94,7 +94,7 @@ export const HomePage: React.FC = () => {
       />
 
       {/* Floating WhatsApp Contact Trigger */}
-      <WhatsAppFloatingButton phoneNumber="919922868727" />
+      <WhatsAppFloatingButton phoneNumber="918010484563" />
     </div>
   );
 };

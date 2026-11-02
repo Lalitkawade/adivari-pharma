@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </div>
 
             <p className="text-[12px] text-[#CBC7BB] leading-relaxed max-w-sm">
-              WHO-GMP compliant manufacturer and international exporter of sterile lyophilized injectables, antibiotics, and critical care parenterals based in Mumbai, India.
+              Quality-focused pharmaceutical solutions provider and international exporter of diverse therapeutic products including tablets, capsules, injectables, and critical care medicines, backed by qualified manufacturing partners and regulatory support.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-1">
@@ -136,12 +136,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
                   </svg>
                 </span>
                 <a
-                  href="https://wa.me/919922868727?text=Hello%20Adivari%20Pharma%2C%20I%20am%20inquiring%20about%20your%20export%20catalogue."
+                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20inquiring%20about%20your%20pharmaceutical%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#25D366] font-semibold transition-colors flex items-center gap-1.5"
                 >
-                  <span>WhatsApp: +91 99228 68727</span>
+                  <span>WhatsApp: +91 80104 84563</span>
                 </a>
               </div>
               <div className="pt-2">

@@ -6,8 +6,8 @@ interface WhatsAppFloatingButtonProps {
 }
 
 export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
-  phoneNumber = '919922868727',
-  defaultMessage = 'Hello Adivari Pharma, I am interested in inquiring about your sterile injectable formulations and export catalogue.'
+  phoneNumber = '918010484563',
+  defaultMessage = 'Hello Adivari Pharma, I am interested in inquiring about your pharmaceutical product portfolio and business partnership.'
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -22,7 +22,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
         }`}
       >
         <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-        <span className="font-medium">Chat on WhatsApp (+91 99228 68727)</span>
+        <span className="font-medium">Chat on WhatsApp (+91 80104 84563)</span>
       </div>
 
       {/* Main Floating Trigger Button */}
@@ -33,7 +33,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative group w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
-        aria-label="Contact Adivari Pharma on WhatsApp at 9922868727"
+        aria-label="Contact Adivari Pharma on WhatsApp at 8010484563"
         title="Chat with us on WhatsApp"
       >
         {/* Pulsing ring animation behind button */}

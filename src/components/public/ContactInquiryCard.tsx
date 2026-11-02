@@ -87,12 +87,12 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                   </svg>
                 </div>
                 <a
-                  href="https://wa.me/919922868727?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20export%20formulations."
+                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-bold text-[#141414] hover:text-[#25D366] text-left transition-colors flex items-center gap-2 group"
                 >
-                  <span>WhatsApp: +91 99228 68727</span>
+                  <span>Phone / WhatsApp: +91 80104 84563</span>
                   <span className="text-[10px] font-mono font-semibold bg-[#E7F8ED] text-[#1E7E34] px-2 py-0.5 rounded-full border border-[#BDE8CB] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                     Chat Live
                   </span>

@@ -4,23 +4,23 @@ export const TrustBar: React.FC = () => {
   const features = [
     {
       code: 'QUALITY',
-      title: 'International Standards',
-      desc: 'Formulations manufactured to USP, BP, and IP specifications with batch-wise testing.'
+      title: 'International Quality Standards',
+      desc: 'Quality-focused pharmaceutical sourcing supported by applicable manufacturing and documentation standards.'
     },
     {
-      code: 'MANUFACTURING',
-      title: 'WHO-GMP Certified Plant',
-      desc: 'Modern sterile injectable facilities with automated filling and freeze-drying lines.'
+      code: 'PHARMACEUTICAL SOLUTIONS',
+      title: 'Diverse Product Portfolio',
+      desc: 'A broad range of pharmaceutical products designed to support diverse healthcare needs.'
     },
     {
       code: 'REGULATORY',
-      title: 'Full CTD Dossiers & COPP',
-      desc: 'Ready technical files and health authority certificates for fast registration overseas.'
+      title: 'Documentation & Compliance Support',
+      desc: 'Supporting international business requirements with available product and regulatory documentation.'
     },
     {
       code: 'GLOBAL SUPPLY',
-      title: 'Temperature-Safe Shipping',
-      desc: 'Continuous cold-chain and ambient freight dispatched by air and sea to global ports.'
+      title: 'Reliable International Supply',
+      desc: 'Dependable supply coordination for distributors and healthcare partners across global markets.'
     }
   ];
 

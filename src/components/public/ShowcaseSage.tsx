@@ -34,16 +34,16 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
             {/* Left Column: Human, Confident Pharmaceutical Copy */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#D4CFBE] uppercase block">
-                STERILE MANUFACTURING FACILITY
+                QUALIFIED MANUFACTURING PARTNERS
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.08] font-['Plus_Jakarta_Sans']">
-                Modern manufacturing, <br />
-                trusted by hospitals
+                Quality sourcing, <br />
+                trusted by global healthcare
               </h2>
 
               <p className="text-xs sm:text-sm text-[#D8D4C8] max-w-lg leading-relaxed">
-                Our manufacturing plant in Maharashtra is purpose-built for sterile injectables and freeze-dried vials. Operating under strict WHO-GMP protocols, our automated filling suites and dedicated cleanrooms ensure uncompromised quality and safety for global healthcare providers.
+                We partner with audited, WHO-GMP compliant manufacturing facilities across India to source and supply quality-assured pharmaceutical formulations. Covering a diverse portfolio including tablets, capsules, injectables, critical care, and anti-infectives, our qualified partner network ensures strict regulatory compliance and dependable international supply.
               </p>
 
               <div className="pt-2">
@@ -51,7 +51,7 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
                   onClick={onOpenRfq}
                   className="btn-sensiq-white px-7 py-3.5 text-xs font-semibold shadow-md"
                 >
-                  <span>Request Facility &amp; Dossier Details</span>
+                  <span>Request Portfolio &amp; Dossier Details</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </button>
               </div>
@@ -60,17 +60,17 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
               <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs text-[#E5E1D5]">
                 <div>
                   <p className="font-bold text-white text-xs font-mono">WHO-GMP</p>
-                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Certified Plant</p>
+                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Partner Facilities</p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-white text-xs font-mono">ASEPTIC</p>
-                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Automated Lines</p>
+                  <p className="font-bold text-white text-xs font-mono">DIVERSE</p>
+                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Therapeutic Range</p>
                 </div>
 
                 <div>
                   <p className="font-bold text-white text-xs font-mono">GLOBAL</p>
-                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Exporting Worldwide</p>
+                  <p className="text-[11px] text-[#C4BFB0] mt-0.5">Supply Coordination</p>
                 </div>
               </div>
 
@@ -81,21 +81,21 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
               <div className="overflow-hidden rounded-[28px] border border-white/15 shadow-2xl relative">
                 <img
                   src="/images/facility-showcase.jpg"
-                  alt="Adivari Pharmaceuticals Sterile Cleanroom Facility"
+                  alt="Adivari Pharmaceuticals Quality Manufacturing Partners"
                   className="w-full h-72 sm:h-92 object-cover object-center transform hover:scale-102 transition-transform duration-700"
                 />
                 
                 {/* Floating Credential Badge */}
                 <div className="absolute top-4 left-4 bg-[#141414]/80 backdrop-blur-md rounded-full text-xs flex items-center gap-2 py-1.5 px-3.5 border border-white/20">
                   <span className="w-2 h-2 rounded-full bg-[#E2CA40]" />
-                  <span className="text-[11px] text-white font-medium">WHO-GMP Compliant Suites</span>
+                  <span className="text-[11px] text-white font-medium">WHO-GMP Compliant Standards</span>
                 </div>
 
                 {/* Overlaid Bottom Card */}
                 <div className="absolute bottom-4 left-4 right-4 bg-[#141414]/90 backdrop-blur-md rounded-2xl p-4 border border-white/15 shadow-xl flex items-center justify-between gap-3">
                   <div>
                     <p className="text-white text-xs font-medium leading-snug">
-                      Automated freeze-drying &amp; high-precision visual inspection
+                      Quality-verified batch testing &amp; international documentation support
                     </p>
                   </div>
                   <button
