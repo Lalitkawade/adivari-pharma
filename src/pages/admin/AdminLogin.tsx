@@ -71,8 +71,8 @@ export const AdminLogin: React.FC = () => {
             <h2 className="text-2xl font-black text-[#1C221E] font-['Outfit'] tracking-tight">
               ADIVARI ADMIN PORTAL
             </h2>
-            <p className="text-xs text-[#738278] mt-0.5">
-              Authorized Executive Access
+            <p className="text-xs text-[#738278] mt-0.5 font-medium">
+              Authorized Executive Access • ADIVARI PHARMACEUTICALS PRIVATE LIMITED
             </p>
           </div>
         </div>

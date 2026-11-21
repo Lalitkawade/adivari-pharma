@@ -40,7 +40,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 Technical Specifications &amp; CTD Dossier
               </h3>
               <p className="text-xs text-[#635F55] font-mono">
-                Regulatory Dossier &amp; Quality Standards • Adivari Pharmaceuticals
+                Regulatory Dossier &amp; Quality Standards • ADIVARI PHARMACEUTICALS PRIVATE LIMITED
               </p>
             </div>
           </div>

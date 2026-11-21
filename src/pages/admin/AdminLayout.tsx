@@ -100,11 +100,11 @@ export const AdminLayout: React.FC = () => {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-[#1C221E] font-['Outfit'] text-sm tracking-wide">
-                  Adivari Pharma
+                <h3 className="font-bold text-[#1C221E] font-['Outfit'] text-xs tracking-tight uppercase">
+                  ADIVARI PHARMACEUTICALS
                 </h3>
-                <p className="text-[10px] text-[#6E8E7C] uppercase tracking-widest font-extrabold">
-                  Admin Operations
+                <p className="text-[9px] text-[#6E8E7C] uppercase tracking-wider font-extrabold">
+                  PRIVATE LIMITED • ADMIN
                 </p>
               </div>
             </Link>

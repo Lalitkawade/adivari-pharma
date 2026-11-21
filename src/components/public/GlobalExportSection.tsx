@@ -84,7 +84,7 @@ export const GlobalExportSection: React.FC<GlobalExportSectionProps> = ({ onOpen
             </h2>
 
             <p className="text-xs sm:text-sm text-[#635F55] leading-relaxed">
-              Adivari Pharmaceuticals offers export-oriented sterile manufacturing compliant with WHO-GMP guidelines. We assist international pharmaceutical distributors, hospital groups, and licensed importers with complete regulatory dossiers, verified analytical batch releases, and temperature-controlled logistics.
+              ADIVARI PHARMACEUTICALS PRIVATE LIMITED offers export-oriented sterile manufacturing compliant with WHO-GMP guidelines. We assist international pharmaceutical distributors, hospital groups, and licensed importers with complete regulatory dossiers, verified analytical batch releases, and temperature-controlled logistics.
             </p>
           </div>
 

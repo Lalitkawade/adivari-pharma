@@ -135,7 +135,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 Request for Quotation (RFQ)
               </h3>
               <p className="text-xs text-[#635F55] font-mono">
-                Export Division • Adivari Pharmaceuticals
+                Export Division • ADIVARI PHARMACEUTICALS PRIVATE LIMITED
               </p>
             </div>
           </div>

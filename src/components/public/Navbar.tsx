@@ -25,17 +25,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-3">
         
         {/* Left: Brand Identity (Modernist lowercase/clean Grotesque matching 'sensiq' reference) */}
-        <Link to="/" className="flex items-center gap-2 sm:gap-2.5 text-decoration-none group shrink-0">
+        <Link 
+          to="/" 
+          className="flex items-center gap-2 sm:gap-2.5 text-decoration-none group shrink-0"
+          title="ADIVARI PHARMACEUTICALS PRIVATE LIMITED"
+        >
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white p-1 border border-[#DFDCD4] flex items-center justify-center overflow-hidden shadow-xs group-hover:border-[#141414] transition-all">
             <img 
               src="/images/Adivari Pharmaceutical Logo with Leaf and Capsule.png" 
-              alt="Adivari Logo" 
+              alt="ADIVARI PHARMACEUTICALS PRIVATE LIMITED" 
               className="w-full h-full object-contain"
             />
           </div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-lg sm:text-xl font-extrabold tracking-tight text-[#141414] font-['Plus_Jakarta_Sans'] lowercase">
-              adivari<span className="text-[#8E897D] text-[10px] sm:text-xs font-semibold uppercase tracking-wider ml-1">pharma</span>
+          <div className="flex items-baseline gap-1 sm:gap-1.5 whitespace-nowrap">
+            <span className="text-base sm:text-xl font-bold tracking-tight text-[#141414] font-['Plus_Jakarta_Sans']">
+              Adivari
+            </span>
+            <span className="text-[11px] sm:text-sm font-semibold tracking-normal text-[#7A7569] font-['Plus_Jakarta_Sans']">
+              Pharmaceuticals
             </span>
           </div>
         </Link>
@@ -71,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
         {/* Right Desktop: WhatsApp Direct + Black Pill Action CTA Button + Admin Link */}
         <div className="hidden sm:flex items-center gap-2.5">
           <a
-            href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
+            href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
             target="_blank"
             rel="noopener noreferrer"
             className="h-10 px-3 rounded-full bg-white border border-[#DFDCD4] flex items-center gap-1.5 text-xs font-semibold text-[#141414] hover:border-[#25D366] hover:text-[#25D366] transition-all shadow-xs"
@@ -105,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
         {/* Right Mobile Actions: Compact WhatsApp Icon + Quote Pill + Rounded Menu Button */}
         <div className="flex sm:hidden items-center gap-2">
           <a
-            href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
+            href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
             target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs"
@@ -138,6 +145,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
       {/* Mobile Editorial Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-x border-[#DFDCD4] rounded-b-[28px] mx-2 px-5 pt-4 pb-6 space-y-3 shadow-2xl animate-in slide-in-from-top-4 duration-200">
+          <div className="text-[10px] font-mono font-bold tracking-wider text-[#635F55] uppercase pb-2 border-b border-[#EFECE5]">
+            ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+          </div>
           <div className="grid grid-cols-2 gap-2 border-b border-[#EFECE5] pb-3">
             <a
               href="#catalog"
@@ -172,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
 
           <div className="pt-1 flex flex-col gap-2">
             <a
-              href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
+              href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}

@@ -65,9 +65,14 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
               <span>International Trade Desk</span>
             </div>
 
-            <h3 className="text-xl font-bold text-[#141414] font-['Plus_Jakarta_Sans'] tracking-tight">
-              Export Inquiries &amp; Quotations
-            </h3>
+            <div className="space-y-1">
+              <h3 className="text-xl font-bold text-[#141414] font-['Plus_Jakarta_Sans'] tracking-tight">
+                Export Inquiries &amp; Quotations
+              </h3>
+              <p className="text-[11px] font-mono tracking-wider text-[#696356] font-bold uppercase">
+                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+              </p>
+            </div>
 
             <div className="space-y-3 text-[#58554D]">
               <div className="flex items-start gap-3">
@@ -87,7 +92,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                   </svg>
                 </div>
                 <a
-                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
+                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-bold text-[#141414] hover:text-[#25D366] text-left transition-colors flex items-center gap-2 group"

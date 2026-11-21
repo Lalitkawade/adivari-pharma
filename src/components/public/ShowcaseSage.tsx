@@ -81,7 +81,7 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
               <div className="overflow-hidden rounded-[28px] border border-white/15 shadow-2xl relative">
                 <img
                   src="/images/facility-showcase.jpg"
-                  alt="Adivari Pharmaceuticals Quality Manufacturing Partners"
+                  alt="ADIVARI PHARMACEUTICALS PRIVATE LIMITED Quality Manufacturing Partners"
                   className="w-full h-72 sm:h-92 object-cover object-center transform hover:scale-102 transition-transform duration-700"
                 />
                 

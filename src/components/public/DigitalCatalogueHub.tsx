@@ -147,7 +147,7 @@ export const DigitalCatalogueHub: React.FC<DigitalCatalogueHubProps> = ({ onOpen
             </h2>
 
             <p className="text-xs sm:text-sm text-[#5D594F] leading-relaxed max-w-2xl">
-              We partner with licensed importers, hospital procurement groups, and pharmaceutical distributors across more than 25 countries—providing complete registration support, batch-wise testing certificates, and dependable temperature-controlled shipping.
+              At <strong className="font-semibold text-[#141414]">ADIVARI PHARMACEUTICALS PRIVATE LIMITED</strong>, we partner with licensed importers, hospital procurement groups, and pharmaceutical distributors across more than 25 countries—providing complete registration support, batch-wise testing certificates, and dependable temperature-controlled shipping.
             </p>
           </div>
 

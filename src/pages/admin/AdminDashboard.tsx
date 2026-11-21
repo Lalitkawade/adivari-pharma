@@ -75,7 +75,7 @@ export const AdminDashboard: React.FC = () => {
             Operations &amp; Leads Dashboard
           </h1>
           <p className="text-xs sm:text-sm text-[#6A7870]">
-            Monitor wholesale inquiries, manage formulation categories, and track international orders.
+            ADIVARI PHARMACEUTICALS PRIVATE LIMITED • Wholesale inquiries, formulation categories, and export operations.
           </p>
         </div>
 

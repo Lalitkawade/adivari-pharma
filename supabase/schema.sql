@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Adivari Pharmaceuticals - Production Supabase Database Schema
+-- ADIVARI PHARMACEUTICALS PRIVATE LIMITED - Production Supabase Database Schema
 -- Project: https://cdhpgfsxarxdymicmohk.supabase.co
 -- 
 -- How to apply:

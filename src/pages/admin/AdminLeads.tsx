@@ -413,7 +413,7 @@ export const AdminLeads: React.FC = () => {
                   </div>
 
                   <a
-                    href={`mailto:${selectedLead.email}?subject=Commercial Quotation - ${selectedLead.referenceNumber} - Adivari Pharmaceuticals`}
+                    href={`mailto:${selectedLead.email}?subject=Commercial Quotation - ${selectedLead.referenceNumber} - ADIVARI PHARMACEUTICALS PRIVATE LIMITED`}
                     className="btn-terracotta py-2 px-4 text-xs font-bold"
                   >
                     <Mail className="w-3.5 h-3.5" />

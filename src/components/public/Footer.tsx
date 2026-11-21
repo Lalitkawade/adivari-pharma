@@ -20,10 +20,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
           
           {/* Column 1: Brand & Bio (4 cols) */}
           <div className="lg:col-span-4 space-y-4 text-left">
-            <div className="flex items-center gap-2.5">
-              <span className="text-2xl font-extrabold tracking-tight text-white font-['Plus_Jakarta_Sans'] lowercase">
-                adivari<span className="text-[#E2CA40] text-xs font-semibold uppercase tracking-wider ml-1">pharma</span>
-              </span>
+            <div className="space-y-1">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-2xl font-extrabold tracking-tight text-white font-['Plus_Jakarta_Sans']">
+                  Adivari
+                </span>
+                <span className="text-sm font-semibold tracking-normal text-[#E2CA40] font-['Plus_Jakarta_Sans']">
+                  Pharmaceuticals
+                </span>
+              </div>
+              <p className="text-[11px] font-mono tracking-wider text-[#E2CA40] font-bold uppercase">
+                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+              </p>
             </div>
 
             <p className="text-[12px] text-[#CBC7BB] leading-relaxed max-w-sm">
@@ -117,6 +125,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
               Export Desk
             </h4>
             <div className="space-y-2 text-[11px] text-[#CBC7BB]">
+              <p className="text-[11px] font-semibold text-white tracking-wide">
+                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+              </p>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#E2CA40] shrink-0 mt-0.5" />
                 <span>MIDC Zone, Andheri East, Mumbai, MH - 400093, India</span>
@@ -136,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
                   </svg>
                 </span>
                 <a
-                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharma%2C%20I%20am%20inquiring%20about%20your%20pharmaceutical%20products."
+                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20inquiring%20about%20your%20pharmaceutical%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#25D366] font-semibold transition-colors flex items-center gap-1.5"
@@ -161,7 +172,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
         {/* Bottom Strip: Copyright & Watermark Anchor */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A498] pt-2">
           <div>
-            © {new Date().getFullYear()} Adivari Pharmaceuticals Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} ADIVARI PHARMACEUTICALS PRIVATE LIMITED. All rights reserved.
           </div>
 
           <div className="flex items-center gap-4">

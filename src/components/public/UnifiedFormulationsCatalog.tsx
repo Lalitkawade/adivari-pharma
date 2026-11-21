@@ -124,7 +124,7 @@ export const UnifiedFormulationsCatalog: React.FC<UnifiedFormulationsCatalogProp
             </h2>
 
             <p className="text-xs sm:text-sm text-[#635F55] leading-relaxed">
-              Explore our growing pharmaceutical portfolio across multiple therapeutic categories, including tablets, capsules, injectables, critical care medicines, anti-infectives, and specialty healthcare solutions.
+              Explore the official pharmaceutical portfolio of <strong className="font-semibold text-[#141414]">ADIVARI PHARMACEUTICALS PRIVATE LIMITED</strong> across multiple therapeutic categories, including tablets, capsules, injectables, critical care medicines, anti-infectives, and specialty healthcare solutions.
             </p>
           </div>
 
@@ -137,6 +137,38 @@ export const UnifiedFormulationsCatalog: React.FC<UnifiedFormulationsCatalogProp
               <FileText className="w-3.5 h-3.5" />
               <span>Submit Bulk RFQ</span>
             </button>
+          </div>
+        </div>
+
+        {/* Portfolio Visual Showcase Banner: Tablets, Capsules, Injectables, Critical Care with Botanical Theme */}
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#DFDCD4] bg-[#FAF9F5] shadow-xs group">
+          <div className="relative aspect-[16/9] sm:aspect-[21/9] lg:aspect-[24/9] w-full overflow-hidden bg-[#FAF8F4]">
+            <img 
+              src="/images/portfolio-showcase-banner.jpg" 
+              alt="ADIVARI PHARMACEUTICALS - Tablets, Capsules, Sterile Injectables, Critical Care, Anti-Infectives Portfolio"
+              className="w-full h-full object-cover object-center transform group-hover:scale-[1.015] transition-transform duration-700 ease-out"
+            />
+            {/* Soft subtle gradient scrim for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
+            
+            {/* Category Badges Overlay */}
+            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-5 right-3 sm:right-5 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#141414] text-[10px] sm:text-xs font-semibold shadow-xs border border-white/60">
+                  Tablets &amp; Capsules
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#141414] text-[10px] sm:text-xs font-semibold shadow-xs border border-white/60">
+                  Sterile Injectables
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#141414] text-[10px] sm:text-xs font-semibold shadow-xs border border-white/60">
+                  Critical Care &amp; Anti-Infectives
+                </span>
+              </div>
+              <span className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
+                <span>WHO-GMP Validated Formulations</span>
+              </span>
+            </div>
           </div>
         </div>
 

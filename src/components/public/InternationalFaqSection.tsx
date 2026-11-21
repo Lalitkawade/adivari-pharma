@@ -21,8 +21,8 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
 
   const faqs: FaqItem[] = [
     {
-      question: "How can foreign distributors and hospitals start importing from Adivari?",
-      answer: "You can start by submitting an inquiry or Request for Quotation (RFQ) through our website with your target products and estimated order volumes. Our export team responds within 24 hours with a comprehensive commercial quotation (CIF or FOB terms), product specifications, and documentation samples to help you begin your evaluation.",
+      question: "How can foreign distributors and hospitals start importing from ADIVARI PHARMACEUTICALS PRIVATE LIMITED?",
+      answer: "You can start by submitting an inquiry or Request for Quotation (RFQ) through our website to ADIVARI PHARMACEUTICALS PRIVATE LIMITED with your target products and estimated order volumes. Our export team responds within 24 hours with a comprehensive commercial quotation (CIF or FOB terms), product specifications, and documentation samples to help you begin your evaluation.",
       category: "Ordering & Inquiries"
     },
     {

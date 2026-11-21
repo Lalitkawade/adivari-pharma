@@ -28,7 +28,7 @@ export const ComplianceSection: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            Every vial produced at Adivari Pharmaceuticals undergoes stringent validation across state-of-the-art sterile formulation suites. We adhere to current Good Manufacturing Practices (cGMP) recognized worldwide.
+            Every vial produced by ADIVARI PHARMACEUTICALS PRIVATE LIMITED undergoes stringent validation across state-of-the-art sterile formulation suites. We adhere to current Good Manufacturing Practices (cGMP) recognized worldwide.
           </p>
         </div>
 

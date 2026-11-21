@@ -50,7 +50,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <div className="glow-pill">
               <Users className="w-4 h-4 text-sky-400" />
-              <span>About Adivari Pharmaceuticals</span>
+              <span>About ADIVARI PHARMACEUTICALS PRIVATE LIMITED</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -59,7 +59,7 @@ export const AboutSection: React.FC = () => {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Founded on the pillars of scientific precision and international compliance, <strong>Adivari Pharmaceuticals</strong> specializes in critical care injectables, anti-infectives, and specialized therapeutic formulations. Our mission is to bridge global healthcare gaps by manufacturing high-quality, cost-effective injectable solutions that withstand rigorous regulatory scrutiny across foreign markets.
+              Founded on the pillars of scientific precision and international compliance, <strong>ADIVARI PHARMACEUTICALS PRIVATE LIMITED</strong> specializes in critical care injectables, anti-infectives, and specialized therapeutic formulations. Our mission is to bridge global healthcare gaps by manufacturing high-quality, cost-effective injectable solutions that withstand rigorous regulatory scrutiny across foreign markets.
             </p>
 
             <div className="space-y-3 pt-2">
