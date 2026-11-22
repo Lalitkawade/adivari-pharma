@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Globe2, 
   Menu, 
@@ -9,7 +9,9 @@ import {
   FileText,
   Home,
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  Briefcase,
+  Users
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -18,13 +20,16 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isCurrent = (path: string) => location.pathname === path;
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#ECEAE4]/90 backdrop-blur-md transition-all border-b border-[#DFDCD4]/60">
       {/* Main Navbar Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-3">
         
-        {/* Left: Brand Identity (Modernist lowercase/clean Grotesque matching 'sensiq' reference) */}
+        {/* Left: Brand Identity */}
         <Link 
           to="/" 
           className="flex items-center gap-2 sm:gap-2.5 text-decoration-none group shrink-0"
@@ -47,30 +52,42 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
           </div>
         </Link>
 
-        {/* Center: White Segmented Pill Nav Bar (Strictly hidden on mobile, visible on desktop >= 1024px) */}
+        {/* Center: White Segmented Pill Nav Bar (Desktop >= 1024px) */}
         <nav className="hidden lg:inline-flex items-center nav-segmented-bar">
-          <a
-            href="#"
-            className="w-8 h-8 rounded-full bg-[#141414] text-white flex items-center justify-center transition-transform hover:scale-105"
+          <Link
+            to="/"
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-105 ${
+              isCurrent('/') ? 'bg-[#141414] text-white' : 'bg-transparent text-[#58554D] hover:bg-[#F0ECE2]'
+            }`}
             title="Home"
           >
-            <Home className="w-3.5 h-3.5 text-white" />
-          </a>
+            <Home className="w-3.5 h-3.5" />
+          </Link>
           
-          <a href="#catalog" className="nav-segment-link flex items-center gap-1.5">
+          <Link
+            to="/about"
+            className={`nav-segment-link ${isCurrent('/about') ? 'font-bold text-[#141414]' : ''}`}
+          >
+            About Us
+          </Link>
+
+          <a href="/#catalog" className="nav-segment-link flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
             <span>Formulations</span>
           </a>
-          <a href="#export" className="nav-segment-link">
+
+          <a href="/#export" className="nav-segment-link">
             Global Export
           </a>
-          <a href="#showcase" className="nav-segment-link">
-            Facility
-          </a>
-          <a href="#faq" className="nav-segment-link">
-            FAQ
-          </a>
-          <a href="#contact" className="nav-segment-link">
+
+          <Link
+            to="/careers"
+            className={`nav-segment-link ${isCurrent('/careers') ? 'font-bold text-[#141414]' : ''}`}
+          >
+            Careers
+          </Link>
+
+          <a href="/#contact" className="nav-segment-link">
             Contact
           </a>
         </nav>
@@ -109,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
           </Link>
         </div>
 
-        {/* Right Mobile Actions: Compact WhatsApp Icon + Quote Pill + Rounded Menu Button */}
+        {/* Right Mobile Actions */}
         <div className="flex sm:hidden items-center gap-2">
           <a
             href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
@@ -148,35 +165,63 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
           <div className="text-[10px] font-mono font-bold tracking-wider text-[#635F55] uppercase pb-2 border-b border-[#EFECE5]">
             ADIVARI PHARMACEUTICALS PRIVATE LIMITED
           </div>
+
           <div className="grid grid-cols-2 gap-2 border-b border-[#EFECE5] pb-3">
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors flex items-center justify-between"
+            >
+              <span>Home</span>
+            </Link>
+
+            <Link
+              to="/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors flex items-center justify-between"
+            >
+              <span>About Us</span>
+            </Link>
+
             <a
-              href="#catalog"
+              href="/#catalog"
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors flex items-center justify-between col-span-2"
             >
               <span>Formulations Portfolio &amp; Catalog</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#E2CA40]" />
             </a>
+
             <a
-              href="#export"
+              href="/#export"
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
             >
               Global Export
             </a>
-            <a
-              href="#showcase"
+
+            <Link
+              to="/careers"
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
             >
-              Facility
+              Careers
+            </Link>
+
+            <a
+              href="/#faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
+            >
+              Trade FAQ
             </a>
+
             <a
-              href="#faq"
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EAE6DC] text-xs font-bold text-[#141414] hover:bg-[#F0ECE2] transition-colors"
             >
-              FAQ
+              Contact
             </a>
           </div>
 
@@ -204,6 +249,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
               <span>Request Commercial Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
+            
             <div className="flex items-center justify-between pt-1 text-[11px] text-[#7A7569]">
               <Link
                 to="/admin"
@@ -214,7 +260,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
                 <span>Admin Portal</span>
               </Link>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-[#141414] font-medium"
               >
@@ -227,3 +273,5 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
     </header>
   );
 };
+
+export default Navbar;

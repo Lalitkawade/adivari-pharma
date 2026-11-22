@@ -12,7 +12,7 @@ import {
   Ship, 
   FileText,
   Copy,
-  Sparkles
+  AlertCircle
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -31,6 +31,9 @@ const COUNTRIES = [
   'United Kingdom', 'Germany', 'France', 'Other International'
 ];
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\./0-9]{6,20}$/;
+
 export const RfqModal: React.FC<RfqModalProps> = ({ 
   isOpen, 
   onClose, 
@@ -44,8 +47,8 @@ export const RfqModal: React.FC<RfqModalProps> = ({
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('Mexico');
   const [portOfEntry, setPortOfEntry] = useState('');
-  const [organizationType, setOrganizationType] = useState<any>('Licensed Importer');
-  const [incoterms, setIncoterms] = useState<any>('CIF');
+  const [organizationType, setOrganizationType] = useState<string>('Licensed Importer');
+  const [incoterms, setIncoterms] = useState<string>('CIF');
   const [message, setMessage] = useState('');
   
   // Selected items
@@ -53,6 +56,10 @@ export const RfqModal: React.FC<RfqModalProps> = ({
   const [quantity, setQuantity] = useState<number>(10000);
   const [unit, setUnit] = useState<string>('vials');
   
+  // Validation State
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedRfqId, setSubmittedRfqId] = useState<string | null>(null);
 
@@ -66,11 +73,103 @@ export const RfqModal: React.FC<RfqModalProps> = ({
 
   if (!isOpen) return null;
 
+  const validateField = (field: string, val: any): string | null => {
+    switch (field) {
+      case 'companyName':
+        if (!val || !val.trim()) return 'Company or Importer name is required.';
+        if (val.trim().length < 2) return 'Company name must be at least 2 characters.';
+        return null;
+      case 'contactPerson':
+        if (!val || !val.trim()) return 'Contact person name and title are required.';
+        if (val.trim().length < 2) return 'Name must be at least 2 characters.';
+        return null;
+      case 'email':
+        if (!val || !val.trim()) return 'Corporate email address is required.';
+        if (!EMAIL_REGEX.test(val.trim())) return 'Please enter a valid email address (e.g. name@company.com).';
+        return null;
+      case 'phone':
+        if (!val || !val.trim()) return 'Phone or WhatsApp contact number is required.';
+        if ((val.match(/\d/g) || []).length < 7 || !PHONE_REGEX.test(val.trim())) {
+          return 'Please enter a valid phone number with country code.';
+        }
+        return null;
+      case 'quantity':
+        if (val === '' || val === null || isNaN(Number(val)) || Number(val) <= 0) {
+          return 'Quantity must be greater than zero.';
+        }
+        return null;
+      default:
+        return null;
+    }
+  };
+
+  const validateAll = (): Record<string, string> => {
+    const newErrors: Record<string, string> = {};
+    const cErr = validateField('companyName', companyName);
+    if (cErr) newErrors.companyName = cErr;
+
+    const pErr = validateField('contactPerson', contactPerson);
+    if (pErr) newErrors.contactPerson = pErr;
+
+    const eErr = validateField('email', email);
+    if (eErr) newErrors.email = eErr;
+
+    const phErr = validateField('phone', phone);
+    if (phErr) newErrors.phone = phErr;
+
+    const qErr = validateField('quantity', quantity);
+    if (qErr) newErrors.quantity = qErr;
+
+    return newErrors;
+  };
+
+  const handleBlur = (field: string, value: any) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    const error = validateField(field, value);
+    setErrors(prev => {
+      const next = { ...prev };
+      if (error) {
+        next[field] = error;
+      } else {
+        delete next[field];
+      }
+      return next;
+    });
+  };
+
+  const handleChange = (field: string, value: any, setter: (val: any) => void) => {
+    setter(value);
+    if (touched[field] || errors[field]) {
+      const error = validateField(field, value);
+      setErrors(prev => {
+        const next = { ...prev };
+        if (error) {
+          next[field] = error;
+        } else {
+          delete next[field];
+        }
+        return next;
+      });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!companyName || !contactPerson || !email) {
-      toast.error('Please enter company name, contact person, and corporate email.');
+    // Mark all required fields as touched
+    setTouched({
+      companyName: true,
+      contactPerson: true,
+      email: true,
+      phone: true,
+      quantity: true
+    });
+
+    const validationErrors = validateAll();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      toast.error('Please correct the highlighted fields with red borders.');
       return;
     }
 
@@ -88,16 +187,16 @@ export const RfqModal: React.FC<RfqModalProps> = ({
       ];
 
       const newRfq = await addQuotation({
-        companyName,
-        contactPerson,
-        email,
-        phone,
+        companyName: companyName.trim(),
+        contactPerson: contactPerson.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
         country,
-        portOfEntry,
+        portOfEntry: portOfEntry.trim(),
         organizationType,
         incoterms,
         items,
-        message
+        message: message.trim()
       });
 
       setSubmittedRfqId(newRfq.referenceNumber);
@@ -116,7 +215,10 @@ export const RfqModal: React.FC<RfqModalProps> = ({
     setContactPerson('');
     setEmail('');
     setPhone('');
+    setPortOfEntry('');
     setMessage('');
+    setErrors({});
+    setTouched({});
     onClose();
   };
 
@@ -186,19 +288,19 @@ export const RfqModal: React.FC<RfqModalProps> = ({
 
             <button
               onClick={handleResetAndClose}
-              className="btn-terracotta px-8 py-2.5 mx-auto text-sm"
+              className="btn-sensiq-black px-8 py-2.5 mx-auto text-sm"
             >
               Return to Catalog
             </button>
           </div>
         ) : (
           /* Form View */
-          <form onSubmit={handleSubmit} className="p-6 sm:p-8 max-h-[75vh] overflow-y-auto space-y-5 text-xs">
+          <form onSubmit={handleSubmit} noValidate className="p-6 sm:p-8 max-h-[75vh] overflow-y-auto space-y-5 text-xs">
             
             {/* Product selection banner */}
             <div className="p-4 rounded-2xl bg-[#FAF8F4] border border-[#ECE5D9] space-y-3">
               <label className="block text-xs font-bold text-[#1C221E] uppercase tracking-wider">
-                Select Formulation & Batch Volume
+                Select Formulation &amp; Batch Volume
               </label>
 
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
@@ -206,7 +308,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                   <select
                     value={selectedProductId}
                     onChange={(e) => setSelectedProductId(e.target.value)}
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 text-xs font-medium focus:outline-none focus:border-[#6E8E7C]"
+                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 text-xs font-medium focus:outline-none focus:border-[#141414]"
                   >
                     {products.map(p => (
                       <option key={p.id} value={p.id}>
@@ -217,19 +319,27 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 </div>
 
                 <div className="sm:col-span-4 flex gap-2">
-                  <input
-                    type="number"
-                    min="100"
-                    step="500"
-                    value={quantity}
-                    onChange={(e) => setQuantity(Number(e.target.value))}
-                    className="w-2/3 bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 text-xs font-medium focus:outline-none focus:border-[#6E8E7C]"
-                    placeholder="Quantity"
-                  />
+                  <div className="w-2/3">
+                    <input
+                      type="number"
+                      min="1"
+                      step="100"
+                      value={quantity}
+                      onChange={(e) => handleChange('quantity', Number(e.target.value), setQuantity)}
+                      onBlur={() => handleBlur('quantity', quantity)}
+                      aria-invalid={Boolean(errors.quantity)}
+                      className={`w-full bg-white text-[#1C221E] rounded-xl p-2.5 text-xs font-medium transition-all focus:outline-none ${
+                        errors.quantity
+                          ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/25'
+                          : 'border border-[#D5CDC0] focus:border-[#141414]'
+                      }`}
+                      placeholder="Quantity"
+                    />
+                  </div>
                   <select
                     value={unit}
                     onChange={(e) => setUnit(e.target.value)}
-                    className="w-1/3 bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 text-xs focus:outline-none focus:border-[#6E8E7C]"
+                    className="w-1/3 bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 text-xs focus:outline-none focus:border-[#141414]"
                   >
                     <option value="vials">Vials</option>
                     <option value="packs">Packs</option>
@@ -237,37 +347,55 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                   </select>
                 </div>
               </div>
+
+              {errors.quantity && (
+                <p className="text-[11px] text-red-600 font-medium flex items-center gap-1 animate-in fade-in duration-150">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{errors.quantity}</span>
+                </p>
+              )}
             </div>
 
             {/* Buyer Company & Country Info */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[#3B4840] font-semibold mb-1">
-                  Company / Importer Name *
+                  Company / Importer Name <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Building2 className="w-4 h-4 text-[#8C9B92] absolute left-3 top-3" />
+                  <Building2 className={`w-4 h-4 absolute left-3 top-3 ${errors.companyName ? 'text-red-500' : 'text-[#8C9B92]'}`} />
                   <input
                     type="text"
-                    required
                     value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
+                    onChange={(e) => handleChange('companyName', e.target.value, setCompanyName)}
+                    onBlur={() => handleBlur('companyName', companyName)}
                     placeholder="e.g. MedGlobal Distribuidora S.A."
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#6E8E7C]"
+                    aria-invalid={Boolean(errors.companyName)}
+                    className={`w-full bg-white text-[#1C221E] rounded-xl p-2.5 pl-9 transition-all focus:outline-none ${
+                      errors.companyName
+                        ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/25'
+                        : 'border border-[#D5CDC0] focus:border-[#141414]'
+                    }`}
                   />
                 </div>
+                {errors.companyName && (
+                  <p className="text-[11px] text-red-600 font-medium flex items-center gap-1 mt-1 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.companyName}</span>
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-[#3B4840] font-semibold mb-1">
-                  Destination Country *
+                  Destination Country <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <Globe2 className="w-4 h-4 text-[#8C9B92] absolute left-3 top-3" />
                   <select
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#6E8E7C]"
+                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#141414]"
                   >
                     {COUNTRIES.map(c => (
                       <option key={c} value={c}>{c}</option>
@@ -281,33 +409,55 @@ export const RfqModal: React.FC<RfqModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[#3B4840] font-semibold mb-1">
-                  Contact Person (Name & Title) *
+                  Contact Person (Name &amp; Title) <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  required
                   value={contactPerson}
-                  onChange={(e) => setContactPerson(e.target.value)}
+                  onChange={(e) => handleChange('contactPerson', e.target.value, setContactPerson)}
+                  onBlur={() => handleBlur('contactPerson', contactPerson)}
                   placeholder="e.g. Dr. Carlos Mendoza (Procurement Dir.)"
-                  className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#6E8E7C]"
+                  aria-invalid={Boolean(errors.contactPerson)}
+                  className={`w-full bg-white text-[#1C221E] rounded-xl p-2.5 transition-all focus:outline-none ${
+                    errors.contactPerson
+                      ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/25'
+                      : 'border border-[#D5CDC0] focus:border-[#141414]'
+                  }`}
                 />
+                {errors.contactPerson && (
+                  <p className="text-[11px] text-red-600 font-medium flex items-center gap-1 mt-1 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.contactPerson}</span>
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-[#3B4840] font-semibold mb-1">
-                  Corporate Email *
+                  Corporate Email <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-[#8C9B92] absolute left-3 top-3" />
+                  <Mail className={`w-4 h-4 absolute left-3 top-3 ${errors.email ? 'text-red-500' : 'text-[#8C9B92]'}`} />
                   <input
                     type="email"
-                    required
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => handleChange('email', e.target.value, setEmail)}
+                    onBlur={() => handleBlur('email', email)}
                     placeholder="procurement@yourcompany.com"
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#6E8E7C]"
+                    aria-invalid={Boolean(errors.email)}
+                    className={`w-full bg-white text-[#1C221E] rounded-xl p-2.5 pl-9 transition-all focus:outline-none ${
+                      errors.email
+                        ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/25'
+                        : 'border border-[#D5CDC0] focus:border-[#141414]'
+                    }`}
                   />
                 </div>
+                {errors.email && (
+                  <p className="text-[11px] text-red-600 font-medium flex items-center gap-1 mt-1 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.email}</span>
+                  </p>
+                )}
               </div>
             </div>
 
@@ -315,18 +465,30 @@ export const RfqModal: React.FC<RfqModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[#3B4840] font-semibold mb-1">
-                  Phone / WhatsApp
+                  Phone / WhatsApp <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 text-[#8C9B92] absolute left-3 top-3" />
+                  <Phone className={`w-4 h-4 absolute left-3 top-3 ${errors.phone ? 'text-red-500' : 'text-[#8C9B92]'}`} />
                   <input
                     type="tel"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => handleChange('phone', e.target.value, setPhone)}
+                    onBlur={() => handleBlur('phone', phone)}
                     placeholder="+52 55 1234 5678"
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#6E8E7C]"
+                    aria-invalid={Boolean(errors.phone)}
+                    className={`w-full bg-white text-[#1C221E] rounded-xl p-2.5 pl-9 transition-all focus:outline-none ${
+                      errors.phone
+                        ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/25'
+                        : 'border border-[#D5CDC0] focus:border-[#141414]'
+                    }`}
                   />
                 </div>
+                {errors.phone && (
+                  <p className="text-[11px] text-red-600 font-medium flex items-center gap-1 mt-1 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.phone}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -340,8 +502,9 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                     value={portOfEntry}
                     onChange={(e) => setPortOfEntry(e.target.value)}
                     placeholder="e.g. Veracruz Port / Mexico City Airport"
-                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#6E8E7C]"
-                  />
+                    className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 pl-9 focus:outline-none focus:border-[#141414]"
+                  >
+                  </input>
                 </div>
               </div>
             </div>
@@ -355,7 +518,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 <select
                   value={organizationType}
                   onChange={(e) => setOrganizationType(e.target.value)}
-                  className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#6E8E7C]"
+                  className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#141414]"
                 >
                   <option value="Licensed Importer">Licensed Pharmaceutical Importer</option>
                   <option value="Hospital Network">Hospital Network / Healthcare Provider</option>
@@ -372,7 +535,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 <select
                   value={incoterms}
                   onChange={(e) => setIncoterms(e.target.value)}
-                  className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#6E8E7C]"
+                  className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#141414]"
                 >
                   <option value="CIF">CIF (Cost, Insurance and Freight)</option>
                   <option value="FOB">FOB (Free on Board / Mumbai Port)</option>
@@ -392,7 +555,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Indicate requirement for CTD dossier, custom multilingual packaging (English/Spanish/French), or delivery schedule..."
-                className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#6E8E7C]"
+                className="w-full bg-white border border-[#D5CDC0] text-[#1C221E] rounded-xl p-2.5 focus:outline-none focus:border-[#141414]"
               />
             </div>
 
@@ -408,7 +571,7 @@ export const RfqModal: React.FC<RfqModalProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-sensiq-black py-2.5 px-7 text-xs font-medium"
+                className="btn-sensiq-black py-2.5 px-7 text-xs font-medium disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitting ? 'Submitting...' : 'Submit Commercial RFQ'}</span>

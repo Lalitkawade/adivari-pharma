@@ -12,7 +12,7 @@ import { ContactInquiryCard } from '../../components/public/ContactInquiryCard';
 import { Footer } from '../../components/public/Footer';
 import { ProductModal } from '../../components/public/ProductModal';
 import { RfqModal } from '../../components/public/RfqModal';
-import { WhatsAppFloatingButton } from '../../components/public/WhatsAppFloatingButton';
+import { StickyContactWidget } from '../../components/public/StickyContactWidget';
 
 export const HomePage: React.FC = () => {
   const { products, categories } = useData();
@@ -93,8 +93,8 @@ export const HomePage: React.FC = () => {
         preSelectedProductId={rfqProductId}
       />
 
-      {/* Floating WhatsApp Contact Trigger */}
-      <WhatsAppFloatingButton phoneNumber="918010484563" />
+      {/* Refined Executive Sticky Contact Hub (Calling + WhatsApp) */}
+      <StickyContactWidget />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ArrowRight,
   ShieldCheck,
@@ -46,7 +47,7 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
                 We partner with audited, WHO-GMP compliant manufacturing facilities across India to source and supply quality-assured pharmaceutical formulations. Covering a diverse portfolio including tablets, capsules, injectables, critical care, and anti-infectives, our qualified partner network ensures strict regulatory compliance and dependable international supply.
               </p>
 
-              <div className="pt-2">
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <button
                   onClick={onOpenRfq}
                   className="btn-sensiq-white px-7 py-3.5 text-xs font-semibold shadow-md"
@@ -54,6 +55,13 @@ export const ShowcaseSage: React.FC<ShowcaseSageProps> = ({ onOpenRfq }) => {
                   <span>Request Portfolio &amp; Dossier Details</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </button>
+                <Link
+                  to="/about"
+                  className="px-5 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5"
+                >
+                  <span>About Our Facility</span>
+                  <ArrowRight className="w-3 h-3 text-[#E2CA40]" />
+                </Link>
               </div>
 
               {/* 3 Practical Metrics Row */}

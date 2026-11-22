@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Mail, ArrowUp, MapPin, Phone, Plane, Ship, Globe2 } from 'lucide-react';
+import { Lock, Mail, ArrowUp, MapPin, Phone, Plane, Ship, Globe2, Briefcase } from 'lucide-react';
 
 interface FooterProps {
   onOpenRfq: () => void;
@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
     <footer className="mt-16 bg-[#4A463B] text-white pt-14 pb-10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
         
-        {/* Top 4-Column Directory Grid (Direct match to reference footer structure!) */}
+        {/* Top 4-Column Directory Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10 text-xs">
           
           {/* Column 1: Brand & Bio (4 cols) */}
@@ -58,28 +58,44 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </h4>
             <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
-                  Overview
+                <Link to="/" className="hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <a href="/#catalog" className="hover:text-white transition-colors">
+                  Formulations Catalog
                 </a>
               </li>
               <li>
-                <a href="#recommended" className="hover:text-white transition-colors">
-                  Formulations
-                </a>
-              </li>
-              <li>
-                <a href="#export" className="hover:text-white transition-colors">
+                <a href="/#export" className="hover:text-white transition-colors">
                   Global Exports
                 </a>
               </li>
               <li>
-                <a href="#showcase" className="hover:text-white transition-colors">
-                  Standards
+                <Link to="/careers" className="hover:text-[#E2CA40] transition-colors font-semibold flex items-center gap-1">
+                  <span>Careers</span>
+                  <span className="text-[9px] px-1 py-0.2 bg-[#E2CA40] text-[#141414] rounded-full font-mono font-bold">HIRING</span>
+                </Link>
+              </li>
+              <li>
+                <a href="/#showcase" className="hover:text-white transition-colors">
+                  Standards &amp; Facility
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-white transition-colors">
+                <a href="/#faq" className="hover:text-white transition-colors">
                   Trade FAQ
+                </a>
+              </li>
+              <li>
+                <a href="/#contact" className="hover:text-white transition-colors">
+                  Contact Desk
                 </a>
               </li>
             </ul>
@@ -92,27 +108,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </h4>
             <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
+                <a href="/#catalog" className="hover:text-white transition-colors">
                   • Tigecycline for Injection 50mg
                 </a>
               </li>
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
+                <a href="/#catalog" className="hover:text-white transition-colors">
                   • Meropenem for Injection 1000mg
                 </a>
               </li>
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
+                <a href="/#catalog" className="hover:text-white transition-colors">
                   • Heparin Sodium Injection 5000 IU
                 </a>
               </li>
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
+                <a href="/#catalog" className="hover:text-white transition-colors">
                   • Esomeprazole for Injection 40mg
                 </a>
               </li>
               <li>
-                <a href="#core-products" className="hover:text-white transition-colors">
+                <a href="/#catalog" className="hover:text-white transition-colors">
                   • Contract Manufacturing (OEM)
                 </a>
               </li>
@@ -150,44 +166,41 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
                   href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20inquiring%20about%20your%20pharmaceutical%20products."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-[#25D366] font-semibold transition-colors flex items-center gap-1.5"
+                  className="hover:text-white transition-colors"
                 >
-                  <span>WhatsApp: +91 80104 84563</span>
+                  WhatsApp: +91 80104 84563
                 </a>
               </div>
-              <div className="pt-2">
-                <button
-                  onClick={onOpenRfq}
-                  className="btn-sensiq-white py-2 px-4 text-xs font-bold"
-                >
-                  <span>Request RFQ (CIF/FOB)</span>
-                  <ArrowUp className="w-3.5 h-3.5 rotate-45" />
-                </button>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#E2CA40] shrink-0" />
+                <span>export@adivaripharma.com</span>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Strip: Copyright & Watermark Anchor */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A498] pt-2">
+        {/* Bottom Strip */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A497]">
           <div>
-            © {new Date().getFullYear()} ADIVARI PHARMACEUTICALS PRIVATE LIMITED. All rights reserved.
+            &copy; {new Date().getFullYear()} ADIVARI PHARMACEUTICALS PRIVATE LIMITED. All rights reserved.
           </div>
 
           <div className="flex items-center gap-4">
-            <Link 
-              to="/admin" 
-              className="inline-flex items-center gap-1 text-[#E2CA40] hover:underline font-semibold"
-            >
+            <Link to="/about" className="hover:text-white transition-colors">
+              About
+            </Link>
+            <Link to="/careers" className="hover:text-white transition-colors">
+              Careers
+            </Link>
+            <Link to="/admin" className="hover:text-white transition-colors flex items-center gap-1">
               <Lock className="w-3 h-3" />
               <span>Admin Portal</span>
             </Link>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all ml-2"
-              title="Back to top"
-              aria-label="Back to top"
+              className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors ml-2"
+              title="Scroll to Top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
@@ -195,13 +208,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
         </div>
 
       </div>
-
-      {/* Giant Typography Watermark Spanning Across Footer (Direct match to 'sensiq' reference!) */}
-      <div className="w-full overflow-hidden flex justify-center items-center pointer-events-none select-none mt-4 -mb-4">
-        <div className="footer-watermark tracking-tighter">
-          adivari
-        </div>
-      </div>
     </footer>
   );
 };
+
+export default Footer;

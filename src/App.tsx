@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/public/HomePage';
+import { AboutPage } from './pages/public/AboutPage';
+import { CareersPage } from './pages/public/CareersPage';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminLayout } from './pages/admin/AdminLayout';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
@@ -9,6 +11,7 @@ import { AdminProducts } from './pages/admin/AdminProducts';
 import { AdminLeads } from './pages/admin/AdminLeads';
 import { AdminDownloads } from './pages/admin/AdminDownloads';
 import { useAuth } from './context/AuthContext';
+import { ScrollToTop } from './components/public/ScrollToTop';
 
 // Protected Route wrapper for Admin with session check
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -31,45 +34,61 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 export const App: React.FC = () => {
   return (
-    <Routes>
-      {/* Public Storefront Route */}
-      <Route path="/" element={<HomePage />} />
-
-      {/* Admin Auth Route */}
-      <Route path="/admin/login" element={<AdminLogin />} />
-
-      {/* Protected Admin Suite - 5 Streamlined Production Sections */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <AdminLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<Navigate to="/admin/dashboard" replace />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Public Storefront Routes with Proper Nomenclature */}
+        <Route path="/" element={<HomePage />} />
         
-        {/* Section 1: Dashboard */}
-        <Route path="dashboard" element={<AdminDashboard />} />
+        {/* About Us Page & Aliases */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about-us" element={<Navigate to="/about" replace />} />
 
-        {/* Section 2: Categories */}
-        <Route path="categories" element={<AdminCategories />} />
+        {/* Careers Page & Aliases */}
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/career" element={<Navigate to="/careers" replace />} />
 
-        {/* Section 3: Products Catalog (Addition as per category) */}
-        <Route path="products" element={<AdminProducts />} />
+        {/* Formulations & Catalog Redirects */}
+        <Route path="/products" element={<Navigate to="/#catalog" replace />} />
+        <Route path="/catalog" element={<Navigate to="/#catalog" replace />} />
+        <Route path="/contact" element={<Navigate to="/#contact" replace />} />
 
-        {/* Section 4: Website Leads (Capture leads with Open, Pending, Closed actions) */}
-        <Route path="leads" element={<AdminLeads />} />
-        <Route path="quotations" element={<Navigate to="/admin/leads" replace />} />
+        {/* Admin Auth Route */}
+        <Route path="/admin/login" element={<AdminLogin />} />
 
-        {/* Section 5: Download Files */}
-        <Route path="downloads" element={<AdminDownloads />} />
-        <Route path="settings" element={<Navigate to="/admin/downloads" replace />} />
-      </Route>
+        {/* Protected Admin Suite */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          
+          {/* Section 1: Dashboard */}
+          <Route path="dashboard" element={<AdminDashboard />} />
 
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+          {/* Section 2: Categories */}
+          <Route path="categories" element={<AdminCategories />} />
+
+          {/* Section 3: Products Catalog */}
+          <Route path="products" element={<AdminProducts />} />
+
+          {/* Section 4: Website Leads */}
+          <Route path="leads" element={<AdminLeads />} />
+          <Route path="quotations" element={<Navigate to="/admin/leads" replace />} />
+
+          {/* Section 5: Download Files */}
+          <Route path="downloads" element={<AdminDownloads />} />
+          <Route path="settings" element={<Navigate to="/admin/downloads" replace />} />
+        </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 };
 

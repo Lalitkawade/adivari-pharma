@@ -6,7 +6,9 @@ import {
   Mail, 
   CheckCircle2, 
   Leaf, 
-  Globe2 
+  Globe2,
+  AlertCircle,
+  ArrowRight
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -16,38 +18,84 @@ interface ContactInquiryCardProps {
   onOpenRfq: () => void;
 }
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\./0-9]{6,20}$/;
+
 export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRfq }) => {
   const { addQuotation } = useData();
   const [quickContact, setQuickContact] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isTouched, setIsTouched] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateInput = (value: string): string | null => {
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return 'Please enter your work email or WhatsApp phone number.';
+    }
+    if (trimmed.includes('@')) {
+      if (!EMAIL_REGEX.test(trimmed)) {
+        return 'Please enter a valid corporate email (e.g. procurement@company.com).';
+      }
+    } else {
+      const digitCount = (trimmed.match(/\d/g) || []).length;
+      if (!PHONE_REGEX.test(trimmed) || digitCount < 7) {
+        return 'Please enter a valid phone or WhatsApp number with country code (e.g. +91 80104 84563).';
+      }
+    }
+    return null;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setQuickContact(val);
+    if (isTouched || error) {
+      setError(validateInput(val));
+    }
+  };
+
+  const handleInputBlur = () => {
+    setIsTouched(true);
+    setError(validateInput(quickContact));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!quickContact.trim()) {
-      toast.error('Please enter your work email or WhatsApp phone number.');
+    setIsTouched(true);
+    const validationError = validateInput(quickContact);
+    if (validationError) {
+      setError(validationError);
+      toast.error('Please enter a valid email or phone number.');
       return;
     }
 
-    const isEmail = quickContact.includes('@');
+    setError(null);
+    setIsSubmitting(true);
+    const trimmed = quickContact.trim();
+    const isEmail = trimmed.includes('@');
+
     try {
       await addQuotation({
         companyName: 'Website Quick Lead',
-        contactPerson: quickContact,
-        email: isEmail ? quickContact : 'inquiry-lead@adivaripharma.com',
-        phone: !isEmail ? quickContact : '',
+        contactPerson: trimmed,
+        email: isEmail ? trimmed : 'inquiry-lead@adivaripharma.com',
+        phone: !isEmail ? trimmed : '',
         country: 'International Visitor',
         organizationType: 'Licensed Importer',
         incoterms: 'CIF',
         items: [
           { productId: 'general', productName: 'Express Export Catalog & Pricing Inquiry', quantity: 1, unit: 'request' }
         ],
-        message: `Direct inquiry from website: ${quickContact}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing.`
+        message: `Direct express inquiry from website: ${trimmed}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing.`
       });
       setSubmitted(true);
       toast.success('Inquiry received! Our export team will reach out within 24 hours.');
     } catch (err) {
       console.error(err);
       toast.error('Submission failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -144,21 +192,40 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                   <span>Inquiry received! Our export manager will contact you within 24 hours.</span>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="pt-2 flex flex-col sm:flex-row gap-2 max-w-md">
-                  <input
-                    type="text"
-                    required
-                    value={quickContact}
-                    onChange={(e) => setQuickContact(e.target.value)}
-                    placeholder="Work email or WhatsApp number..."
-                    className="flex-1 bg-white border border-[#DFDCD4] text-[#141414] rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-[#141414]"
-                  />
-                  <button
-                    type="submit"
-                    className="btn-sensiq-black py-2.5 px-6 text-xs font-medium shrink-0"
-                  >
-                    Send Inquiry
-                  </button>
+                <form onSubmit={handleSubmit} noValidate className="pt-2 space-y-1.5 max-w-md">
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <div className="flex-1">
+                      <input
+                        type="text"
+                        value={quickContact}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                        placeholder="Work email or WhatsApp number..."
+                        aria-invalid={Boolean(error)}
+                        className={`w-full bg-white text-[#141414] rounded-full px-4 py-2.5 text-xs transition-all focus:outline-none ${
+                          error
+                            ? 'border-2 border-red-500 focus:border-red-600 ring-2 ring-red-100 bg-red-50/20'
+                            : 'border border-[#DFDCD4] focus:border-[#141414]'
+                        }`}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-sensiq-black py-2.5 px-6 text-xs font-medium shrink-0 disabled:opacity-50"
+                    >
+                      <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  {/* Red Border Indicator & Helpful Message */}
+                  {error && (
+                    <div className="flex items-center gap-1.5 text-[11px] text-red-600 font-medium pl-2 pt-0.5 animate-in fade-in duration-150">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{error}</span>
+                    </div>
+                  )}
                 </form>
               )}
 
