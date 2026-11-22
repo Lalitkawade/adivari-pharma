@@ -13,14 +13,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
   };
 
   return (
-    <footer className="mt-16 bg-[#4A463B] text-white pt-14 pb-10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
+    <footer className="mt-12 sm:mt-16 bg-[#4A463B] text-white pt-10 sm:pt-14 pb-8 sm:pb-10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10 relative z-10">
         
-        {/* Top 4-Column Directory Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10 text-xs">
+        {/* Top Directory Grid (Optimized for Mobile) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 pb-8 sm:pb-10 border-b border-white/10 text-xs">
           
-          {/* Column 1: Brand & Bio (4 cols) */}
-          <div className="lg:col-span-4 space-y-4 text-left">
+          {/* Column 1: Brand & Bio (4 cols on lg) */}
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4 text-left">
             <div className="space-y-1">
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl font-extrabold tracking-tight text-white font-['Plus_Jakarta_Sans']">
@@ -39,118 +39,118 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </div>
 
             <p className="text-[12px] text-[#CBC7BB] leading-relaxed max-w-sm">
-              Quality-focused pharmaceutical solutions provider and international exporter of diverse therapeutic products including tablets, capsules, injectables, and critical care medicines, backed by qualified manufacturing partners and regulatory support.
+              Quality-focused pharmaceutical solutions provider and international exporter of diverse therapeutic products including tablets, capsules, injectables, and critical care medicines across 25+ countries.
             </p>
 
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              <span className="px-2 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
                 WHO-GMP
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
                 ISO 9001:2015
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#E2CA40]/20 text-[#E2CA40] text-[10px] font-mono font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-[#E2CA40]/20 text-[#E2CA40] text-[10px] font-mono font-bold">
                 DRUG LIC. 20B/21B
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
                 CTD READY
               </span>
             </div>
           </div>
 
-          {/* Column 2: Navigation Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-2.5">
-            <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
-              Navigation
-            </h4>
-            <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
-              <li>
-                <Link to="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  Formulations Catalog
-                </a>
-              </li>
-              <li>
-                <a href="/#export" className="hover:text-white transition-colors">
-                  Global Exports
-                </a>
-              </li>
-              <li>
-                <Link to="/careers" className="hover:text-[#E2CA40] transition-colors font-semibold flex items-center gap-1">
-                  <span>Careers</span>
-                  <span className="text-[9px] px-1 py-0.2 bg-[#E2CA40] text-[#141414] rounded-full font-mono font-bold">HIRING</span>
-                </Link>
-              </li>
-              <li>
-                <a href="/#showcase" className="hover:text-white transition-colors">
-                  Standards &amp; Facility
-                </a>
-              </li>
-              <li>
-                <a href="/#faq" className="hover:text-white transition-colors">
-                  Trade FAQ
-                </a>
-              </li>
-              <li>
-                <a href="/#contact" className="hover:text-white transition-colors">
-                  Contact Desk
-                </a>
-              </li>
-            </ul>
+          {/* Columns 2 & 3: Navigation & Formulations (Side-by-side in 2 cols on mobile) */}
+          <div className="grid grid-cols-2 gap-4 lg:col-span-5 lg:gap-8">
+            {/* Column 2: Navigation Links */}
+            <div className="space-y-2">
+              <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
+                Navigation
+              </h4>
+              <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
+                <li>
+                  <Link to="/" className="hover:text-white transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-white transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    Catalog
+                  </a>
+                </li>
+                <li>
+                  <a href="/#export" className="hover:text-white transition-colors">
+                    Exports
+                  </a>
+                </li>
+                <li>
+                  <Link to="/careers" className="hover:text-[#E2CA40] transition-colors font-semibold flex items-center gap-1">
+                    <span>Careers</span>
+                    <span className="text-[8px] px-1 py-0.2 bg-[#E2CA40] text-[#141414] rounded-full font-mono font-bold">HIRING</span>
+                  </Link>
+                </li>
+                <li>
+                  <a href="/#showcase" className="hover:text-white transition-colors">
+                    Standards
+                  </a>
+                </li>
+                <li>
+                  <a href="/#faq" className="hover:text-white transition-colors">
+                    Trade FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="/#contact" className="hover:text-white transition-colors">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Formulations */}
+            <div className="space-y-2">
+              <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
+                Formulations
+              </h4>
+              <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    • Tigecycline 50mg
+                  </a>
+                </li>
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    • Meropenem 1000mg
+                  </a>
+                </li>
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    • Heparin 5000 IU
+                  </a>
+                </li>
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    • Esomeprazole 40mg
+                  </a>
+                </li>
+                <li>
+                  <a href="/#catalog" className="hover:text-white transition-colors">
+                    • Contract OEM
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Column 3: Formulations (3 cols) */}
+          {/* Column 4: Registered Office & Export Hub (3 cols on lg) */}
           <div className="lg:col-span-3 space-y-2.5">
             <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
-              Formulations (USP/IP)
-            </h4>
-            <ul className="space-y-1.5 text-[11px] text-[#CBC7BB]">
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  • Tigecycline for Injection 50mg
-                </a>
-              </li>
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  • Meropenem for Injection 1000mg
-                </a>
-              </li>
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  • Heparin Sodium Injection 5000 IU
-                </a>
-              </li>
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  • Esomeprazole for Injection 40mg
-                </a>
-              </li>
-              <li>
-                <a href="/#catalog" className="hover:text-white transition-colors">
-                  • Contract Manufacturing (OEM)
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Registered Office & Export Hub (3 cols) */}
-          <div className="lg:col-span-3 space-y-2.5">
-            <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
-              Registered Office &amp; Export Hub
+              Registered Office &amp; Export
             </h4>
             <div className="space-y-2 text-[11px] text-[#CBC7BB]">
-              <p className="text-[11px] font-semibold text-white tracking-wide">
-                {COMPANY_DETAILS.legalName}
-              </p>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#E2CA40] shrink-0 mt-0.5" />
                 <span className="leading-snug">
@@ -197,62 +197,62 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
 
         </div>
 
-        {/* Corporate Statutory & Government Identification Strip */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-xs">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+        {/* Corporate Statutory & Government Identification Strip (2 cols on mobile, 4 on desktop) */}
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-xs">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left">
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
-                Corporate Identification No. (CIN)
+                CIN
               </span>
-              <span className="font-mono font-bold text-white text-[12px] tracking-wide block">
+              <span className="font-mono font-bold text-white text-[11px] sm:text-[12px] tracking-wide block truncate" title={COMPANY_DETAILS.cin}>
                 {COMPANY_DETAILS.cin}
               </span>
             </div>
 
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
-                GSTIN / State Tax ID
+                GSTIN
               </span>
-              <span className="font-mono font-bold text-white text-[12px] tracking-wide block">
+              <span className="font-mono font-bold text-white text-[11px] sm:text-[12px] tracking-wide block truncate" title={COMPANY_DETAILS.gstin}>
                 {COMPANY_DETAILS.gstin}
               </span>
             </div>
 
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
-                Drug Licence Nos. (FDA MH)
+                Drug Licences (FDA MH)
               </span>
-              <span className="font-mono font-bold text-[#E2CA40] text-[12px] tracking-wide block">
+              <span className="font-mono font-bold text-[#E2CA40] text-[11px] sm:text-[12px] tracking-wide block">
                 20B-647243 &amp; 21B-647244
               </span>
-              <span className="text-[10px] text-[#CBC7BB] block font-mono">
+              <span className="text-[9px] text-[#CBC7BB] block font-mono">
                 Validity: 07/09/2031
               </span>
             </div>
 
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
-                PAN &amp; TAN Identification
+                PAN &amp; TAN
               </span>
-              <div className="font-mono text-white text-[11px] flex items-center gap-2">
-                <span>PAN: <strong className="text-white">{COMPANY_DETAILS.pan}</strong></span>
+              <div className="font-mono text-white text-[11px] flex items-center gap-1.5">
+                <span>{COMPANY_DETAILS.pan}</span>
                 <span>•</span>
-                <span>TAN: <strong className="text-white">{COMPANY_DETAILS.tan}</strong></span>
+                <span>{COMPANY_DETAILS.tan}</span>
               </div>
-              <span className="text-[10px] text-[#CBC7BB] block">
-                Official: {COMPANY_DETAILS.contact.email}
+              <span className="text-[9px] text-[#CBC7BB] block truncate">
+                {COMPANY_DETAILS.contact.email}
               </span>
             </div>
           </div>
         </div>
 
         {/* Bottom Strip */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A497]">
-          <div>
-            &copy; {new Date().getFullYear()} {COMPANY_DETAILS.legalName} (CIN: {COMPANY_DETAILS.cin}). All rights reserved.
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#A8A497]">
+          <div className="text-center sm:text-left">
+            &copy; {new Date().getFullYear()} {COMPANY_DETAILS.legalName}. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link to="/about" className="hover:text-white transition-colors">
               About
             </Link>
@@ -261,11 +261,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </Link>
             <Link to="/admin" className="hover:text-white transition-colors flex items-center gap-1">
               <Lock className="w-3 h-3" />
-              <span>Admin Portal</span>
+              <span>Admin</span>
             </Link>
             <button
               onClick={scrollToTop}
-              className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors ml-2"
+              className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors ml-1"
               title="Scroll to Top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
