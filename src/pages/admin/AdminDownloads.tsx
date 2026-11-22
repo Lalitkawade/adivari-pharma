@@ -15,6 +15,7 @@ import {
   Layers
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 
 export const AdminDownloads: React.FC = () => {
   const { products, categories, quotations } = useData();
@@ -192,9 +193,11 @@ export const AdminDownloads: React.FC = () => {
   // 6. Download Certificate of Analysis (COA) Template
   const downloadCoaTemplate = () => {
     const coaContent = `# CERTIFICATE OF ANALYSIS (COA) - FINISHED STERILE INJECTABLE
-**ADIVARI PHARMACEUTICALS PRIVATE LIMITED**
-**Quality Control & Quality Assurance Laboratories**
-*MIDC Pharmaceutical Zone, Andheri East, Mumbai, Maharashtra 400093, India*
+**${COMPANY_DETAILS.legalName}**
+**CIN:** ${COMPANY_DETAILS.cin} | **GSTIN:** ${COMPANY_DETAILS.gstin}
+**Drug Licence Nos:** ${COMPANY_DETAILS.drugLicenceDisplay}
+**Registered Office:** ${COMPANY_DETAILS.registeredOffice.full}
+**Official Correspondence:** ${COMPANY_DETAILS.contact.email}
 
 ---
 

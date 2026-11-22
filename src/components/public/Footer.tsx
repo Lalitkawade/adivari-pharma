@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Mail, ArrowUp, MapPin, Phone, Plane, Ship, Globe2, Briefcase } from 'lucide-react';
+import { Lock, Mail, ArrowUp, MapPin, Phone, Plane, Ship, Globe2, Briefcase, ShieldCheck, FileText } from 'lucide-react';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 
 interface FooterProps {
   onOpenRfq: () => void;
@@ -13,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
 
   return (
     <footer className="mt-16 bg-[#4A463B] text-white pt-14 pb-10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
         
         {/* Top 4-Column Directory Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10 text-xs">
@@ -30,7 +31,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
                 </span>
               </div>
               <p className="text-[11px] font-mono tracking-wider text-[#E2CA40] font-bold uppercase">
-                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+                {COMPANY_DETAILS.legalName}
+              </p>
+              <p className="text-[10px] font-mono text-[#CBC7BB]">
+                CIN: {COMPANY_DETAILS.cin}
               </p>
             </div>
 
@@ -44,6 +48,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
                 ISO 9001:2015
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full bg-[#E2CA40]/20 text-[#E2CA40] text-[10px] font-mono font-bold">
+                DRUG LIC. 20B/21B
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold">
                 CTD READY
@@ -101,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </ul>
           </div>
 
-          {/* Column 3: Formulation Monograph (3 cols) */}
+          {/* Column 3: Formulations (3 cols) */}
           <div className="lg:col-span-3 space-y-2.5">
             <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
               Formulations (USP/IP)
@@ -135,26 +142,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
             </ul>
           </div>
 
-          {/* Column 4: Contact & IncoTerms (3 cols) */}
+          {/* Column 4: Registered Office & Export Hub (3 cols) */}
           <div className="lg:col-span-3 space-y-2.5">
             <h4 className="font-bold text-white font-mono text-[11px] uppercase tracking-wider">
-              Export Desk
+              Registered Office &amp; Export Hub
             </h4>
             <div className="space-y-2 text-[11px] text-[#CBC7BB]">
               <p className="text-[11px] font-semibold text-white tracking-wide">
-                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+                {COMPANY_DETAILS.legalName}
               </p>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#E2CA40] shrink-0 mt-0.5" />
-                <span>MIDC Zone, Andheri East, Mumbai, MH - 400093, India</span>
+                <span className="leading-snug">
+                  {COMPANY_DETAILS.registeredOffice.full}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Ship className="w-3.5 h-3.5 text-[#E2CA40] shrink-0" />
-                <span>Port: JNPT Nhava Sheva (Seaport)</span>
+                <span>Port: {COMPANY_DETAILS.logisticsGateway.seaport}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Plane className="w-3.5 h-3.5 text-[#E2CA40] shrink-0" />
-                <span>Air Hub: BOM (Mumbai Airport)</span>
+                <span>Air Hub: {COMPANY_DETAILS.logisticsGateway.airHub}</span>
               </div>
               <div className="flex items-center gap-2 pt-0.5">
                 <span className="w-3.5 h-3.5 text-[#25D366] shrink-0 flex items-center justify-center">
@@ -163,27 +172,84 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRfq }) => {
                   </svg>
                 </span>
                 <a
-                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20inquiring%20about%20your%20pharmaceutical%20products."
+                  href={COMPANY_DETAILS.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: +91 80104 84563
+                  WhatsApp: {COMPANY_DETAILS.contact.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#E2CA40] shrink-0" />
-                <span>export@adivaripharma.com</span>
+                <a href={`mailto:${COMPANY_DETAILS.contact.email}`} className="hover:text-white transition-colors">
+                  {COMPANY_DETAILS.contact.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#E2CA40] shrink-0" />
+                <a href={`tel:${COMPANY_DETAILS.contact.phoneRaw}`} className="hover:text-white transition-colors">
+                  {COMPANY_DETAILS.contact.phone}
+                </a>
               </div>
             </div>
           </div>
 
         </div>
 
+        {/* Corporate Statutory & Government Identification Strip */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
+                Corporate Identification No. (CIN)
+              </span>
+              <span className="font-mono font-bold text-white text-[12px] tracking-wide block">
+                {COMPANY_DETAILS.cin}
+              </span>
+            </div>
+
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
+                GSTIN / State Tax ID
+              </span>
+              <span className="font-mono font-bold text-white text-[12px] tracking-wide block">
+                {COMPANY_DETAILS.gstin}
+              </span>
+            </div>
+
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
+                Drug Licence Nos. (FDA MH)
+              </span>
+              <span className="font-mono font-bold text-[#E2CA40] text-[12px] tracking-wide block">
+                20B-647243 &amp; 21B-647244
+              </span>
+              <span className="text-[10px] text-[#CBC7BB] block font-mono">
+                Validity: 07/09/2031
+              </span>
+            </div>
+
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-[#A8A497] block uppercase font-bold tracking-wider">
+                PAN &amp; TAN Identification
+              </span>
+              <div className="font-mono text-white text-[11px] flex items-center gap-2">
+                <span>PAN: <strong className="text-white">{COMPANY_DETAILS.pan}</strong></span>
+                <span>•</span>
+                <span>TAN: <strong className="text-white">{COMPANY_DETAILS.tan}</strong></span>
+              </div>
+              <span className="text-[10px] text-[#CBC7BB] block">
+                Official: {COMPANY_DETAILS.contact.email}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Strip */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A497]">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#A8A497]">
           <div>
-            &copy; {new Date().getFullYear()} ADIVARI PHARMACEUTICALS PRIVATE LIMITED. All rights reserved.
+            &copy; {new Date().getFullYear()} {COMPANY_DETAILS.legalName} (CIN: {COMPANY_DETAILS.cin}). All rights reserved.
           </div>
 
           <div className="flex items-center gap-4">

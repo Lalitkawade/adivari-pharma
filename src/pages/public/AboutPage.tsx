@@ -15,12 +15,18 @@ import {
   HeartHandshake,
   Layers,
   Thermometer,
-  Truck
+  Truck,
+  MapPin,
+  Mail,
+  Phone,
+  FileCheck2,
+  Receipt
 } from 'lucide-react';
 import { Navbar } from '../../components/public/Navbar';
 import { Footer } from '../../components/public/Footer';
 import { RfqModal } from '../../components/public/RfqModal';
 import { StickyContactWidget } from '../../components/public/StickyContactWidget';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 
 export const AboutPage: React.FC = () => {
   const [isRfqOpen, setIsRfqOpen] = useState(false);
@@ -270,7 +276,7 @@ export const AboutPage: React.FC = () => {
                 Seamless Export Operations from India's Premier Shipping Corridor
               </h2>
               <p className="text-xs sm:text-sm text-[#CBC7BB] leading-relaxed">
-                Strategically positioned in Mumbai, Adivari Pharmaceuticals leverages direct proximity to Jawaharlal Nehru Port Trust (JNPT Nhava Sheva) and Chhatrapati Shivaji Maharaj International Airport (BOM) for expedited dispatch under verified cold-chain conditions.
+                Strategically linked with India's principal maritime gateway, Adivari Pharmaceuticals leverages direct proximity to Jawaharlal Nehru Port Trust (JNPT Nhava Sheva) and Chhatrapati Shivaji Maharaj International Airport (BOM) for expedited dispatch under verified cold-chain conditions.
               </p>
             </div>
 
@@ -298,6 +304,151 @@ export const AboutPage: React.FC = () => {
                   Flexible trading arrangements including CIF (Destination Port), FOB (Mumbai), CFR, and EXW with complete consular legalization.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Corporate Identification & Statutory Governance Credentials */}
+        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#DFDCD4] text-[10px] font-mono uppercase font-bold text-[#58554D]">
+                <FileCheck2 className="w-3.5 h-3.5 text-[#141414]" />
+                <span>Statutory Verification &amp; Corporate Identity</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141414] tracking-tight font-['Plus_Jakarta_Sans']">
+                Institutional Transparency &amp; Government Licensing
+              </h2>
+              <p className="text-xs sm:text-sm text-[#58554D] leading-relaxed">
+                Full statutory credentials, corporate registration, tax identification, and drug authority licensing details for <strong>{COMPANY_DETAILS.legalName}</strong>.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              
+              {/* Card 1: Incorporation & CIN */}
+              <div className="bg-white rounded-3xl p-6 border border-[#DFDCD4] shadow-xs space-y-4">
+                <div className="w-10 h-10 rounded-2xl bg-[#FAF9F5] border border-[#DFDCD4] flex items-center justify-center text-[#141414]">
+                  <Building2 className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono text-[#8A857A] uppercase font-bold tracking-wider">
+                    Corporate Identity
+                  </span>
+                  <h3 className="text-base font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
+                    Company Registration
+                  </h3>
+                </div>
+                <div className="space-y-2 text-xs pt-1 border-t border-[#EFECE5]">
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">CIN NUMBER:</span>
+                    <span className="font-mono font-bold text-[#141414] text-xs">{COMPANY_DETAILS.cin}</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">LEGAL ENTITY:</span>
+                    <span className="font-semibold text-[#141414] text-[11px]">{COMPANY_DETAILS.legalName}</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">INCORPORATION JURISDICTION:</span>
+                    <span className="text-[#58554D] text-[11px]">RoC Mumbai / Maharashtra, India</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Drug Licences */}
+              <div className="bg-white rounded-3xl p-6 border border-[#DFDCD4] shadow-xs space-y-4">
+                <div className="w-10 h-10 rounded-2xl bg-[#FAF9F5] border border-[#DFDCD4] flex items-center justify-center text-[#141414]">
+                  <ShieldCheck className="w-5 h-5 text-[#2E7D32]" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono text-[#8A857A] uppercase font-bold tracking-wider">
+                    Drug Control Authority
+                  </span>
+                  <h3 className="text-base font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
+                    Drug Licences (FDA MH)
+                  </h3>
+                </div>
+                <div className="space-y-2 text-xs pt-1 border-t border-[#EFECE5]">
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">FORM 20B LICENCE:</span>
+                    <span className="font-mono font-bold text-[#141414] text-xs">20B-647243</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">FORM 21B LICENCE:</span>
+                    <span className="font-mono font-bold text-[#141414] text-xs">21B-647244</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">REGULATORY VALIDITY:</span>
+                    <span className="font-mono font-bold text-[#2E7D32] text-xs bg-[#E7F8ED] px-2 py-0.5 rounded-full inline-block border border-[#BDE8CB]">
+                      Valid Up To 07/09/2031
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Taxation & Fiscal Registrations */}
+              <div className="bg-white rounded-3xl p-6 border border-[#DFDCD4] shadow-xs space-y-4">
+                <div className="w-10 h-10 rounded-2xl bg-[#FAF9F5] border border-[#DFDCD4] flex items-center justify-center text-[#141414]">
+                  <Receipt className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono text-[#8A857A] uppercase font-bold tracking-wider">
+                    Fiscal &amp; Tax Identifiers
+                  </span>
+                  <h3 className="text-base font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
+                    Taxation &amp; Commerce
+                  </h3>
+                </div>
+                <div className="space-y-2 text-xs pt-1 border-t border-[#EFECE5]">
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">GSTIN IDENTIFIER:</span>
+                    <span className="font-mono font-bold text-[#141414] text-xs">{COMPANY_DETAILS.gstin}</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <span className="text-[10px] text-[#7A7569] block font-mono">PAN:</span>
+                      <span className="font-mono font-bold text-[#141414] text-xs">{COMPANY_DETAILS.pan}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-[#7A7569] block font-mono">TAN:</span>
+                      <span className="font-mono font-bold text-[#141414] text-xs">{COMPANY_DETAILS.tan}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A7569] block font-mono">OFFICIAL CORRESPONDENCE:</span>
+                    <a href={`mailto:${COMPANY_DETAILS.contact.email}`} className="font-semibold text-[#141414] hover:underline text-xs">
+                      {COMPANY_DETAILS.contact.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: Registered Office Address */}
+              <div className="bg-white rounded-3xl p-6 border border-[#DFDCD4] shadow-xs space-y-4">
+                <div className="w-10 h-10 rounded-2xl bg-[#FAF9F5] border border-[#DFDCD4] flex items-center justify-center text-[#141414]">
+                  <MapPin className="w-5 h-5 text-[#E2CA40]" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono text-[#8A857A] uppercase font-bold tracking-wider">
+                    Official Headquarters
+                  </span>
+                  <h3 className="text-base font-bold text-[#141414] font-['Plus_Jakarta_Sans']">
+                    Registered Office
+                  </h3>
+                </div>
+                <div className="space-y-2 text-xs pt-1 border-t border-[#EFECE5]">
+                  <p className="text-[#58554D] leading-snug text-xs">
+                    {COMPANY_DETAILS.registeredOffice.full}
+                  </p>
+                  <div className="pt-1 flex items-center gap-2 text-xs">
+                    <Phone className="w-3.5 h-3.5 text-[#141414] shrink-0" />
+                    <a href={`tel:${COMPANY_DETAILS.contact.phoneRaw}`} className="font-semibold text-[#141414] hover:underline">
+                      {COMPANY_DETAILS.contact.phone}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

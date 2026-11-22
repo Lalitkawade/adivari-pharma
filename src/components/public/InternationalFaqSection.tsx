@@ -26,6 +26,11 @@ export const InternationalFaqSection: React.FC<InternationalFaqSectionProps> = (
       category: "Ordering & Inquiries"
     },
     {
+      question: "What are the legal registration, drug licensing, and corporate credentials of ADIVARI PHARMACEUTICALS PRIVATE LIMITED?",
+      answer: "ADIVARI PHARMACEUTICALS PRIVATE LIMITED is an incorporated pharmaceutical enterprise holding Corporate Identification Number (CIN) U46497MR2026PTC478419 under the Ministry of Corporate Affairs, RoC Mumbai. Our authorized drug licenses under Form 20B (No. 20B-647243) and Form 21B (No. 21B-647244) are issued by the Food & Drugs Administration (FDA Maharashtra) with statutory validity through 07/09/2031. Our registered office is at 265 Kharadkar Galli, Paithan, Aurangabad – 431105, Maharashtra, with tax registrations GSTIN 27ABGCA1438G1ZU, PAN ABGCA1438G, and TAN NSKA18910D. Official inquiries are handled directly at info@adivaripharma.com.",
+      category: "Corporate & Licensing"
+    },
+    {
       question: "What registration dossiers and certificates do you supply for Ministry of Health approval?",
       answer: "We supply complete technical dossiers in CTD format (Modules 1 through 5), along with WHO-format Certificates of Pharmaceutical Product (COPP) issued by the Indian drug control authority, Free Sale Certificates (FSC), and batch-specific Certificates of Analysis (COA). We also provide real-time stability data to support drug registration in tropical and warm climates.",
       category: "Regulatory & Dossiers"

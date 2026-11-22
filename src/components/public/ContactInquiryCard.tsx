@@ -8,11 +8,14 @@ import {
   Leaf, 
   Globe2,
   AlertCircle,
-  ArrowRight
+  ArrowRight,
+  ShieldCheck,
+  FileText
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 import { useData } from '../../context/DataContext';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 
 interface ContactInquiryCardProps {
   onOpenRfq: () => void;
@@ -79,7 +82,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
       await addQuotation({
         companyName: 'Website Quick Lead',
         contactPerson: trimmed,
-        email: isEmail ? trimmed : 'inquiry-lead@adivaripharma.com',
+        email: isEmail ? trimmed : COMPANY_DETAILS.contact.email,
         phone: !isEmail ? trimmed : '',
         country: 'International Visitor',
         organizationType: 'Licensed Importer',
@@ -87,7 +90,7 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
         items: [
           { productId: 'general', productName: 'Express Export Catalog & Pricing Inquiry', quantity: 1, unit: 'request' }
         ],
-        message: `Direct express inquiry from website: ${trimmed}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing.`
+        message: `Direct express inquiry from website: ${trimmed}. Requesting wholesale export catalog, CTD dossier availability, and CIF/FOB pricing for ${COMPANY_DETAILS.legalName}.`
       });
       setSubmitted(true);
       toast.success('Inquiry received! Our export team will reach out within 24 hours.');
@@ -118,19 +121,24 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                 Export Inquiries &amp; Quotations
               </h3>
               <p className="text-[11px] font-mono tracking-wider text-[#696356] font-bold uppercase">
-                ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+                {COMPANY_DETAILS.legalName}
+              </p>
+              <p className="text-[10px] font-mono text-[#8A857A]">
+                CIN: {COMPANY_DETAILS.cin} • GSTIN: {COMPANY_DETAILS.gstin}
               </p>
             </div>
 
             <div className="space-y-3 text-[#58554D]">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#4A463B] shrink-0 mt-0.5" />
-                <span>MIDC Pharmaceutical Zone, Andheri East, Mumbai, Maharashtra 400093, India</span>
+                <span className="leading-snug">
+                  <strong>Registered Office:</strong> {COMPANY_DETAILS.registeredOffice.full}
+                </span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-[#4A463B] shrink-0" />
-                <span>Export Operations: Monday to Saturday (Quick response within 24h)</span>
+                <span>Export Operations: Monday to Saturday (Response within 24h)</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -140,12 +148,12 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
                   </svg>
                 </div>
                 <a
-                  href="https://wa.me/918010484563?text=Hello%20Adivari%20Pharmaceuticals%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20pharmaceutical%20products."
+                  href={COMPANY_DETAILS.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-bold text-[#141414] hover:text-[#25D366] text-left transition-colors flex items-center gap-2 group"
                 >
-                  <span>Phone / WhatsApp: +91 80104 84563</span>
+                  <span>Phone / WhatsApp: {COMPANY_DETAILS.contact.phone}</span>
                   <span className="text-[10px] font-mono font-semibold bg-[#E7F8ED] text-[#1E7E34] px-2 py-0.5 rounded-full border border-[#BDE8CB] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                     Chat Live
                   </span>
@@ -154,16 +162,21 @@ export const ContactInquiryCard: React.FC<ContactInquiryCardProps> = ({ onOpenRf
 
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#4A463B] shrink-0" />
-                <span className="font-semibold text-[#141414]">export@adivaripharma.com</span>
+                <a href={`mailto:${COMPANY_DETAILS.contact.email}`} className="font-semibold text-[#141414] hover:underline">
+                  {COMPANY_DETAILS.contact.email}
+                </a>
               </div>
             </div>
 
             <div className="pt-2 flex flex-wrap gap-1.5 text-[10px] text-[#58554D] font-mono">
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
+                Drug Lic: 20B-647243 &amp; 21B-647244
+              </span>
+              <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
                 JNPT Mumbai Port
               </span>
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
-                Air Cargo Mumbai (BOM)
+                Air Cargo BOM
               </span>
               <span className="bg-[#FAF9F5] px-2.5 py-1 rounded-full border border-[#DFDCD4]">
                 Incoterms: CIF / FOB

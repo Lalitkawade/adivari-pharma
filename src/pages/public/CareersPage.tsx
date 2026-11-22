@@ -25,6 +25,7 @@ import { Footer } from '../../components/public/Footer';
 import { RfqModal } from '../../components/public/RfqModal';
 import { StickyContactWidget } from '../../components/public/StickyContactWidget';
 import { useData } from '../../context/DataContext';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 import toast from 'react-hot-toast';
 
 const DEPARTMENTS = [
@@ -258,11 +259,11 @@ export const CareersPage: React.FC = () => {
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <a
-              href="mailto:careers@adivaripharma.com?subject=Job%20Application%20-%20Adivari%20Pharmaceuticals"
+              href={`mailto:${COMPANY_DETAILS.contact.email}?subject=Job%20Application%20-%20Adivari%20Pharmaceuticals`}
               className="btn-sensiq-white justify-center py-3 sm:py-3.5 text-xs font-semibold"
             >
               <Mail className="w-3.5 h-3.5 text-[#58554D]" />
-              <span>Email CV Directly</span>
+              <span>Email: {COMPANY_DETAILS.contact.email}</span>
             </a>
           </div>
         </section>
@@ -715,20 +716,20 @@ export const CareersPage: React.FC = () => {
 
             <div className="shrink-0 flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
               <a
-                href="mailto:careers@adivaripharma.com?subject=Direct%20Job%20Application%20-%20Adivari%20Pharmaceuticals"
+                href={`mailto:${COMPANY_DETAILS.contact.email}?subject=Direct%20Job%20Application%20-%20Adivari%20Pharmaceuticals`}
                 className="btn-sensiq-white w-full sm:w-auto justify-center"
               >
                 <Mail className="w-4 h-4 text-[#141414]" />
-                <span>careers@adivaripharma.com</span>
+                <span>{COMPANY_DETAILS.contact.email}</span>
               </a>
 
               <a
-                href="https://wa.me/918010484563?text=Hello%20Adivari%20HR%20Desk%2C%20I%20am%20interested%20in%20career%20opportunities%20at%20Adivari%20Pharmaceuticals."
+                href={COMPANY_DETAILS.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all w-full sm:w-auto shadow-xs"
               >
-                <span>WhatsApp HR (+91 80104 84563)</span>
+                <span>WhatsApp HR ({COMPANY_DETAILS.contact.phone})</span>
               </a>
             </div>
           </div>

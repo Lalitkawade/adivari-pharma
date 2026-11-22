@@ -15,6 +15,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { COMPANY_DETAILS } from '../../lib/companyDetails';
 
 interface RfqModalProps {
   isOpen: boolean;
@@ -237,7 +238,10 @@ export const RfqModal: React.FC<RfqModalProps> = ({
                 Request for Quotation (RFQ)
               </h3>
               <p className="text-xs text-[#635F55] font-mono">
-                Export Division • ADIVARI PHARMACEUTICALS PRIVATE LIMITED
+                Export Division • {COMPANY_DETAILS.legalName}
+              </p>
+              <p className="text-[10px] text-[#8A857A] font-mono">
+                CIN: {COMPANY_DETAILS.cin} • Drug Lic: {COMPANY_DETAILS.drugLicenceDisplay}
               </p>
             </div>
           </div>
@@ -283,8 +287,12 @@ export const RfqModal: React.FC<RfqModalProps> = ({
             </div>
 
             <p className="text-xs text-[#6A7870] max-w-md mx-auto">
-              A comprehensive commercial quotation with wholesale CIF/FOB pricing and Certificate of Analysis (COA) will be dispatched to your email within <strong className="text-[#3B5244]">12 business hours</strong>.
+              A comprehensive commercial quotation with wholesale CIF/FOB pricing and Certificate of Analysis (COA) will be dispatched from <strong className="text-[#141414]">{COMPANY_DETAILS.contact.email}</strong> within <strong className="text-[#3B5244]">12 business hours</strong>.
             </p>
+
+            <div className="text-[10px] text-[#8A857A] font-mono text-center">
+              Official issuer: {COMPANY_DETAILS.legalName} • GSTIN: {COMPANY_DETAILS.gstin}
+            </div>
 
             <button
               onClick={handleResetAndClose}
