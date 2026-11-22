@@ -249,17 +249,17 @@ export const CareersPage: React.FC = () => {
             At <strong>ADIVARI PHARMACEUTICALS PRIVATE LIMITED</strong>, our team drives high-quality sterile injectables and therapeutic solutions to international healthcare networks across 25+ countries. We welcome passionate pharmaceutical professionals across diverse functional disciplines.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto">
             <button
               onClick={scrollToApply}
-              className="btn-sensiq-black"
+              className="btn-sensiq-black justify-center py-3 sm:py-3.5 text-xs font-semibold"
             >
               <span>Submit Online Application</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <a
               href="mailto:careers@adivaripharma.com?subject=Job%20Application%20-%20Adivari%20Pharmaceuticals"
-              className="btn-sensiq-white"
+              className="btn-sensiq-white justify-center py-3 sm:py-3.5 text-xs font-semibold"
             >
               <Mail className="w-3.5 h-3.5 text-[#58554D]" />
               <span>Email CV Directly</span>

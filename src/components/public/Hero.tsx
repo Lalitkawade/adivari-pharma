@@ -70,26 +70,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRfq, onExploreCatalog }) => {
           </p>
           
           {/* Refined Therapeutic Scope Tags */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-[#5E594D] font-medium pt-0.5">
-            <span className="inline-flex items-center gap-1.5 bg-white/85 px-3.5 py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[11px] sm:text-xs text-[#5E594D] font-medium pt-0.5">
+            <span className="inline-flex items-center gap-1.5 bg-white/90 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B5244]" />
               Tablets &amp; Capsules
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-white/85 px-3.5 py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 bg-white/90 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B5244]" />
               Sterile Injectables
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-white/85 px-3.5 py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 bg-white/90 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#E5DFD4] shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B5244]" />
               Critical Care &amp; Anti-Infectives
             </span>
           </div>
 
           {/* Action Buttons: Centered Dual CTA */}
-          <div className="pt-2 sm:pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto">
+          <div className="pt-2 sm:pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto">
             <button
               onClick={handleExplore}
-              className="btn-sensiq-black px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 shadow-md active:scale-[0.98] transition-all group"
+              className="btn-sensiq-black px-6 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 shadow-md active:scale-[0.98] transition-all group"
             >
               <span>Explore Formulations Portfolio</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRfq, onExploreCatalog }) => {
 
             <button
               onClick={handleRequestQuote}
-              className="btn-sensiq-white px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 shadow-sm active:scale-[0.98] transition-all group border-[#D3CFC4] hover:border-[#141414] hover:bg-white"
+              className="btn-sensiq-white px-6 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 shadow-sm active:scale-[0.98] transition-all group border-[#D3CFC4] hover:border-[#141414] hover:bg-white"
             >
               <span>Request a Quotation</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -66,17 +66,17 @@ export const AboutPage: React.FC = () => {
               <strong>ADIVARI PHARMACEUTICALS PRIVATE LIMITED</strong> is an established pharmaceutical enterprise committed to manufacturing and exporting premier quality critical care injectables, lyophilized antibiotics, and life-saving formulations to healthcare systems across 25+ countries worldwide.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto">
               <button
                 onClick={() => handleOpenRfq()}
-                className="btn-sensiq-black"
+                className="btn-sensiq-black justify-center py-3 sm:py-3.5 text-xs font-semibold"
               >
                 <span>Request Commercial Quotation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <Link
                 to="/#catalog"
-                className="btn-sensiq-white"
+                className="btn-sensiq-white justify-center py-3 sm:py-3.5 text-xs font-semibold"
               >
                 <span>Explore Products Catalog</span>
               </Link>
